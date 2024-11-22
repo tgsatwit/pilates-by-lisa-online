@@ -1,0 +1,40 @@
+/* Add to your global CSS */
+.prose {
+  @apply text-foreground;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mt-6 mb-3;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-4;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80 underline;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary/20 pl-4 italic my-6;
+}
+
+.prose img {
+  @apply rounded-lg my-8;
+}
+
+.prose code {
+  @apply bg-muted px-1 py-0.5 rounded text-sm;
+}

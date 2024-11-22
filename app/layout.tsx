@@ -1,0 +1,40 @@
+import { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
+import { CartProvider } from '@/contexts/cart-context'
+import { Navigation } from '@/components/navigation'
+import { Footer } from '@/components/footer'
+import { Providers } from './providers'
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Pilates by Lisa | Transform Your Practice',
+  description: 'Join our global community and experience world-class Pilates classes from anywhere. Start your transformation journey today.',
+  keywords: 'pilates, online fitness, wellness, workout, exercise, health',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <Providers>
+            <CartProvider>
+              <div className="flex min-h-screen flex-col">
+                <Navigation />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+            </CartProvider>
+          </Providers>
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
