@@ -1,5 +1,41 @@
 import { GraphQLClient } from 'graphql-request'
-import { ShopifyProduct } from './utils'
+import { ShopifyProduct } from '@/lib/shopify-types'
+
+interface ShopifyResponse {
+  products: {
+    edges: Array<{
+      node: {
+        id: string
+        handle: string
+        title: string
+        description: string
+        createdAt: string
+        tags: string[]
+        images: {
+          edges: Array<{
+            node: {
+              url: string
+              altText: string | null
+            }
+          }>
+        }
+        variants: {
+          edges: Array<{
+            node: {
+              price: {
+                amount: string
+                currencyCode: string
+              }
+              compareAtPrice: {
+                amount: string
+              } | null
+            }
+          }>
+        }
+      }
+    }>
+  }
+}
 
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
@@ -20,27 +56,16 @@ const shopifyClient = new GraphQLClient(endpoint, {
 export async function getAllProducts(): Promise<{ products: { edges: Array<{ node: ShopifyProduct }> } }> {
   const query = `
     query Products {
-      products(first: 250) {
+      products(first: 100) {
         edges {
           node {
             id
             handle
             title
             description
+            createdAt
             tags
-            priceRange {
-              minVariantPrice {
-                amount
-                currencyCode
-              }
-            }
-            compareAtPriceRange {
-              minVariantPrice {
-                amount
-                currencyCode
-              }
-            }
-            images(first: 1) {
+            images(first: 10) {
               edges {
                 node {
                   url
@@ -48,7 +73,19 @@ export async function getAllProducts(): Promise<{ products: { edges: Array<{ nod
                 }
               }
             }
-            publishedAt
+            variants(first: 1) {
+              edges {
+                node {
+                  price {
+                    amount
+                    currencyCode
+                  }
+                  compareAtPrice {
+                    amount
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -56,35 +93,24 @@ export async function getAllProducts(): Promise<{ products: { edges: Array<{ nod
   `
 
   try {
-    const response = await shopifyClient.request(query)
+    const response = await shopifyClient.request<ShopifyResponse>(query)
     
-    // Transform the response to match our ShopifyProduct interface
-    const transformedProducts = {
+    return {
       products: {
-        edges: response.products.edges.map(({ node }: any) => ({
+        edges: response.products.edges.map(({ node }) => ({
           node: {
             id: node.id,
             handle: node.handle,
             title: node.title,
             description: node.description,
-            price: parseFloat(node.priceRange.minVariantPrice.amount),
-            compareAtPrice: node.compareAtPriceRange?.minVariantPrice?.amount 
-              ? parseFloat(node.compareAtPriceRange.minVariantPrice.amount)
-              : null,
-            images: node.images.edges.map(({ node: image }: any) => ({
-              url: image.url,
-              altText: image.altText
-            })),
+            createdAt: node.createdAt,
             tags: node.tags,
-            isNew: isNewProduct(node.publishedAt),
-            isSale: node.compareAtPriceRange?.minVariantPrice?.amount > node.priceRange.minVariantPrice.amount,
-            currencyCode: node.priceRange.minVariantPrice.currencyCode
+            images: node.images,
+            variants: node.variants
           }
         }))
       }
     }
-
-    return transformedProducts
   } catch (error) {
     console.error('Error fetching products:', error)
     throw error

@@ -26,12 +26,38 @@ export interface ShopifyProduct {
   description: string
   price: number
   compareAtPrice: number | null
-  images: Array<{
-    url: string
-    altText: string | null
-  }>
-  tags: string[]
-  isNew: boolean
-  isSale: boolean
   currencyCode: string
+  images: ShopifyImage[]
+  tags: string[]
+  isNew?: boolean
+  isSale?: boolean
+}
+
+// Original Shopify API types for reference
+export interface ShopifyAPIProduct {
+  id: string
+  title: string
+  description: string
+  handle: string
+  variants: {
+    edges: Array<{
+      node: {
+        id: string
+        title: string
+        price: {
+          amount: number
+          currencyCode: string
+        }
+      }
+    }>
+  }
+  images: {
+    edges: Array<{
+      node: {
+        url: string
+        altText: string | null
+      }
+    }>
+  }
+  tags: string[]
 }

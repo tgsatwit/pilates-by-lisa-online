@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ShoppingCart } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
-import { useCart } from "@/contexts/cart-context"
+import { useCart } from "@/components/cart/cart-context"
 import { motion } from "framer-motion"
 import { ShopifyProduct } from "@/lib/utils"
 

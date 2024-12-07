@@ -7,28 +7,24 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ShoppingCart } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
+import { Product } from "@/types"
+import { useCart } from "@/components/cart/cart-context"
 
 interface ProductCardProps {
-  product: {
-    id: string
-    handle: string
-    title: string
-    description: string
-    price: number
-    compareAtPrice: number | null
-    images: Array<{
-      url: string
-      altText: string | null
-    }>
-    tags: string[]
-    isNew: boolean
-    isSale: boolean
-    currencyCode: string
-  }
+  product: Product
   index: number
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
+  const { addToCart } = useCart()
+  
+  const handleAddToCart = () => {
+    addToCart({
+      ...product,
+      quantity: 1
+    })
+  }
+
   const discount = product.compareAtPrice 
     ? Math.round((1 - product.price / product.compareAtPrice) * 100)
     : null
@@ -37,8 +33,8 @@ export function ProductCard({ product, index }: ProductCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="group relative bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="group relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-100"
     >
       <Link href={`/shop/${product.handle}`}>
         <div className="relative h-64 overflow-hidden">
@@ -63,35 +59,40 @@ export function ProductCard({ product, index }: ProductCardProps) {
         <div className="p-6">
           <div className="flex flex-wrap gap-2 mb-4">
             {product.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
+              <Badge key={tag} variant="secondary" className="bg-gray-100 text-gray-700">
                 {tag}
               </Badge>
             ))}
           </div>
-          <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+          <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-primary transition-colors">
             {product.title}
           </h3>
-          <p className="text-muted-foreground mb-4 line-clamp-2">
+          <p className="text-gray-600 mb-4 line-clamp-2">
             {product.description}
           </p>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-lg font-semibold">
+              <span className="text-lg font-semibold text-gray-900">
                 {formatPrice(product.price, product.currencyCode)}
               </span>
               {product.compareAtPrice && (
-                <span className="text-sm text-muted-foreground line-through">
+                <span className="text-sm text-gray-500 line-through">
                   {formatPrice(product.compareAtPrice, product.currencyCode)}
                 </span>
               )}
             </div>
-            <Button size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Add to Cart
-            </Button>
           </div>
         </div>
       </Link>
+      <div className="p-4 bg-gray-50">
+        <Button 
+          onClick={handleAddToCart}
+          className="w-full bg-primary hover:bg-primary/90 text-white"
+        >
+          <ShoppingCart className="w-4 h-4 mr-2" />
+          Add to Cart
+        </Button>
+      </div>
     </motion.div>
   )
 }
