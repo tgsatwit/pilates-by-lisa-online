@@ -6,7 +6,6 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 import Header from '@/components/landing/ui/header'
-import Footer from '@/components/landing/ui/footer'
 
 export default function DefaultLayout({
   children,
