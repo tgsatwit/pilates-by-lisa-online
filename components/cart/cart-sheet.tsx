@@ -8,24 +8,21 @@ import { ShoppingCart, Trash2 } from "lucide-react"
 import Image from "next/image"
 import { useCart } from "./cart-context"
 import { formatPrice } from "@/lib/utils"
+import { CartItem } from "@/types"
 
 export function CartSheet() {
   const { items, state, removeFromCart, updateQuantity } = useCart()
-  const itemCount = items.reduce((total, item) => total + item.quantity, 0)
+  const itemCount = items.reduce((total: number, item: CartItem) => total + item.quantity, 0)
   const subtotal = state.total
-  const shipping = 0 // You can implement dynamic shipping calculation here
+  const shipping = 0
   const total = subtotal + shipping
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <ShoppingCart className="h-5 w-5" />
-          {itemCount > 0 && (
-            <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
-              {itemCount}
-            </span>
-          )}
+        <Button variant="ghost" size="icon">
+          <ShoppingCart className="h-6 w-6" />
+          <span className="sr-only">Open cart</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">

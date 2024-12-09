@@ -15,6 +15,27 @@ export interface Product {
   currencyCode: string
 }
 
-export interface CartItem extends Product {
+export interface CartItem {
+  id: string
+  title: string
+  price: number
   quantity: number
+  images: Array<{
+    url: string
+    altText?: string
+  }>
+  currencyCode: string
+  compareAtPrice?: number | null
+}
+
+export interface CartState {
+  items: CartItem[]
+  total: number
+}
+
+export interface CartContextType {
+  items: CartItem[]
+  state: CartState
+  removeFromCart: (itemId: string) => void
+  updateQuantity: (itemId: string, quantity: number) => void
 } 

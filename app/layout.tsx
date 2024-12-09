@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Navigation } from '@/components/navigation'
-import { Footer } from '@/components/footer'
+import Navigation from '@/components/landing/ui/header'
+import Footer from '@/components/landing/ui/footer'
 import { Providers } from './providers'
 import './globals.css'
 import { CartProvider } from "@/components/cart/cart-context"
