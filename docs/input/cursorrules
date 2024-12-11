@@ -1,0 +1,16 @@
+For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+
+When using client-side hooks (useState and useEffect) in a component that's being treated as a Server Component by Next.js, always add the "use client" directive at the top of the file.
+
+Do not write code that will trigger this error: "Warning: Extra attributes from the server: %s%s""class,style"
+
+By default, this template supports TSX syntax with Tailwind CSS classes, the shadcn/ui library, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them. Use icons from lucide-react for logos.
+
+When using Firebase, use the environment variables in .env.local. When using other APIs, put keys in the .env.local.
+
+Always add detailed comments that a novice could understand within files that you create or edit. The should outline the what each part of the code does, why it's there, and how it works, also include the purpose of the file, and data flow.
+
+As well as updating the code, also update these documents:
+- 'docs/output/app_structure.md' :  if new files are added, add them to the file. THis doc should not only contain the structure, but another section which includes all the comments for each of the files (which explain what the file does);
+- 'docs/output/app_functionality.md' :  if new functionality is added, changed or deleted, amend this document to reflect this change;
+- 'docs/output/app_change_log.md' :  if new changes are made, add them to the file with reference to the commit hash;

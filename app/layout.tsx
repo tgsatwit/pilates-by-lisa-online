@@ -1,31 +1,51 @@
-import { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Navigation from '@/components/landing/ui/header'
-import Footer from '@/components/landing/ui/footer'
-import { Providers } from './providers'
+'use client'
+
 import './globals.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import BgShapes from '@/components/landing/bg-shapes'
+import { Inter } from 'next/font/google'
+import { Playfair_Display } from 'next/font/google'
+
+import { useEffect } from 'react'
+
+import { Providers } from './providers'
 import { CartProvider } from "@/components/cart/cart-context"
 
-const inter = Inter({ subsets: ['latin'] })
+import Header from '@/components/landing/ui/header'
+import Footer from '@/components/landing/ui/footer'
 
-export const metadata: Metadata = {
-  title: 'Pilates by Lisa | Transform Your Practice',
-  description: 'Join our global community and experience world-class Pilates classes from anywhere. Start your transformation journey today.',
-  keywords: 'pilates, online fitness, wellness, workout, exercise, health',
-}
+
+
+const inter = Inter({ subsets: ['latin'] })
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair-display',
+  display: 'swap'
+})
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: 'phone',
+      duration: 1000,
+      easing: 'ease-out-cubic',
+    })
+  }, [])
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <CartProvider>
           <Providers>
             <div className="flex min-h-screen flex-col">
-              <Navigation />
+              <BgShapes />
+              <Header />
               <main className="flex-1">{children}</main>
               <Footer />
             </div>

@@ -1,10 +1,30 @@
+'use client'
+
 import Link from 'next/link'
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
+  // Track whether user has scrolled
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Add scroll event listener to change header background
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if page is scrolled more than 10px
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll)
+    
+    // Clean up event listener
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="absolute w-full z-30">
+    <header className={`fixed w-full z-30 transition-colors duration-300 ${isScrolled ? 'bg-black' : 'bg-black'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
 
@@ -37,7 +57,7 @@ export default function Header() {
           {/* Desktop sign in links */}
           <ul className="flex-1 flex justify-end items-center">
             <li className="ml-6">
-              <Link className="btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out w-full py-2 px-5 group [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/30 before:rounded-full before:pointer-events-none" href="/signup">
+              <Link className="btn-sm text-black hover:text-black transition duration-150 ease-in-out w-full py-2 px-5 group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none" href="/signup">
                 <span className="relative inline-flex items-center">
                   Get Started <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                 </span>

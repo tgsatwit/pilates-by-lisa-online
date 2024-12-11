@@ -4,8 +4,16 @@ import { useEffect } from 'react'
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
+import BgShapes from '@/components/landing/bg-shapes'
 import Header from '@/components/landing/ui/header'
+
+import { Playfair_Display } from 'next/font/google'
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair-display',
+  display: 'swap'
+})
 
 export default function DefaultLayout({
   children,
@@ -24,9 +32,10 @@ export default function DefaultLayout({
 
   return (
     <>
+      <BgShapes />
       <Header />
       
-      <main className="grow">
+      <main className="grow pt-16 md:pt-20 bg-slate-100">
 
         {children}
 
