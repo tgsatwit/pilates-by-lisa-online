@@ -30,10 +30,10 @@ export default function Header() {
   return (
     <header className={`fixed w-full z-30 transition-colors duration-300 ${isScrolled ? 'bg-slate-900' : 'bg-slate-900'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-14 md:h-20">
 
           {/* Site branding */}
-          <div className="flex-1">
+          <div className="flex-1 mt-1 md:mt-2">
             <Logo />
           </div>
 
@@ -58,11 +58,16 @@ export default function Header() {
 
           {/* Desktop sign in links */}
           <ul className="flex-1 flex justify-end items-center">
-            <li className="mr-4">
-              <CartSheet />
+            <li className="mr-2 md:mr-4">
+              <div className="scale-75 md:scale-100">
+                <CartSheet />
+              </div>
             </li>
             <li>
-              <Link className="btn-sm text-black hover:text-black transition duration-150 ease-in-out w-full py-2 px-5 group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none" href="/signup">
+              <Link 
+                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-1.5 px-3 md:py-2 md:px-5 text-xs md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none" 
+                href="/signup"
+              >
                 <span className="relative inline-flex items-center">
                   Get Started <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                 </span>
@@ -70,7 +75,9 @@ export default function Header() {
             </li>
           </ul>
 
-          <MobileMenu />
+          <div className="scale-75 md:scale-100">
+            <MobileMenu />
+          </div>
 
         </div>
       </div>
