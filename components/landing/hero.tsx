@@ -23,13 +23,13 @@ export default function Hero() {
             src={HeroBackground}
             alt="Hero Background"
             fill
-            className="object-cover object-center scale-x-[-1]"
+            className="object-cover object-center object-[center_20%] scale-x-[-1]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-100/0 from-90% to-slate-100" />
         </div>
 
-        {/* Increase height with min-h-screen and extra padding */}
+        {/* Reduce top padding by 50px (was pt-32 md:pt-72) */}
         <div className="pt-32 pb-32 md:pt-72 md:pb-96 min-h-[90vh] flex flex-col justify-center">
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="mb-4 flex justify-center md:justify-start" data-aos="fade-down">

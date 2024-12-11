@@ -7,10 +7,64 @@
 
 @import 'tailwindcss/utilities';
 
+/* Base responsive settings */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Responsive viewport settings */
+@viewport {
+  width: device-width;
+  initial-scale: 1;
+}
+
+/* Responsive typography */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Ensure images and videos are responsive */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
 @layer utilities {
     .rtl {
         direction: rtl;
+    }
+    
+    /* Mobile-friendly touch targets */
+    .touch-target {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Prevent horizontal scroll on mobile */
+    .no-horizontal-scroll {
+        overflow-x: hidden;
+    }
+    
+    /* Safe area utilities */
+    .safe-padding {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+    
+    /* Responsive text utilities */
+    .text-responsive {
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
     }
 }
 
@@ -20,4 +74,27 @@
 /* Then you can either use it in your Tailwind config or apply it directly in your CSS */
 .h1 {
   font-family: 'Raleway', sans-serif;
+}
+
+/* Smooth scrolling for the entire site */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Better form elements on mobile */
+input,
+select,
+textarea {
+  font-size: 16px; /* Prevents zoom on focus in iOS */
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Improve mobile button/link interactions */
+button,
+a {
+  touch-action: manipulation;
 }
