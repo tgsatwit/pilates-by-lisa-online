@@ -78,14 +78,14 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 pb-12 pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-slate-100 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h1 className="text-4xl font-bold tracking-tight mb-6">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-6">
             The PBL Blog
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-600">
             Expert tips, insights and guidance to help you on your Pilates journey
           </p>
         </div>
@@ -93,11 +93,11 @@ export default function BlogPage() {
         {/* Search */}
         <div className="max-w-md mx-auto mb-12">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" />
             <Input
               type="search"
               placeholder="Search articles..."
-              className="pl-10"
+              className="pl-10 border-gray-200 bg-white text-gray-900"
               value={searchQuery}
               onChange={handleSearch}
             />
@@ -111,8 +111,10 @@ export default function BlogPage() {
               key={tag}
               variant="outline"
               className={cn(
-                "cursor-pointer px-4 py-2 text-sm transition-colors hover:bg-primary hover:text-white",
-                selectedTag === tag && "bg-primary text-white"
+                "cursor-pointer px-4 py-2 text-sm transition-colors hover:bg-gray-900 hover:text-white border-2 text-gray-700 font-medium rounded-full",
+                selectedTag === tag 
+                  ? "bg-slate-900 text-white border-slate-900 shadow-md" 
+                  : "border-slate-300 hover:border-slate-900"
               )}
               onClick={() => handleTagChange(tag)}
             >
@@ -134,7 +136,7 @@ export default function BlogPage() {
         {/* No Results Message */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-gray-500">
               No articles found matching your criteria
             </p>
           </div>
@@ -147,6 +149,7 @@ export default function BlogPage() {
               variant="outline"
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
+              className="border-gray-200 bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900"
             >
               Previous
             </Button>
@@ -156,8 +159,10 @@ export default function BlogPage() {
                 variant={currentPage === page ? "default" : "outline"}
                 onClick={() => setCurrentPage(page)}
                 className={cn(
-                  "min-w-[40px]",
-                  currentPage === page && "bg-primary text-white"
+                  "min-w-[40px] border-gray-200 bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900",
+                  currentPage === page 
+                    ? "bg-slate-900 text-white hover:bg-slate-800 hover:text-white"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 )}
               >
                 {page}
@@ -167,6 +172,7 @@ export default function BlogPage() {
               variant="outline"
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
+              className="border-gray-200 bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900"
             >
               Next
             </Button>

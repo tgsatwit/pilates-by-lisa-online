@@ -36,7 +36,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-4">Shopping Cart</h1>

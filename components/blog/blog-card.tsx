@@ -4,7 +4,8 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock } from "lucide-react"
+import { Calendar, Clock, ChevronLeft, ChevronRight } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface BlogCardProps {
   post: {
@@ -24,8 +25,8 @@ export function BlogCard({ post, index }: BlogCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="group relative bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="group relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-100"
     >
       <Link href={`/blog/${post.slug}`}>
         <div className="relative h-64 overflow-hidden">
@@ -35,22 +36,26 @@ export function BlogCard({ post, index }: BlogCardProps) {
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
-        </div>
-        <div className="p-6">
-          <div className="flex flex-wrap gap-2 mb-4">
+          {/* Post badges */}
+          <div className="absolute top-4 left-4 flex flex-col gap-2">
             {post.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
+              <Badge 
+                key={tag} 
+                className="bg-white/80 backdrop-blur-sm text-gray-900 shadow-sm"
+              >
                 {tag}
               </Badge>
             ))}
           </div>
-          <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">
             {post.title}
           </h3>
-          <p className="text-muted-foreground mb-4 line-clamp-2">
+          <div className="text-gray-600 mb-4 line-clamp-2">
             {post.excerpt}
-          </p>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          </div>
+          <div className="flex items-center gap-4 text-sm text-gray-500">
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
               <time dateTime={post.date}>
