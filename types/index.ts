@@ -20,6 +20,7 @@ export interface Product {
 
 export interface CartItem {
   id: string
+  handle: string
   title: string
   price: number
   quantity: number

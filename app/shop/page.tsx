@@ -3,8 +3,6 @@
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Search, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ProductCard } from "@/components/shop/product-card"
 import { cn } from "@/lib/utils"
@@ -67,7 +65,7 @@ export default function ShopPage() {
 
   if (isLoading) {
     return (
-      <div className="bg-white">
+      <div className="bg-slate-100">
         <div className="mt-24 flex items-center justify-center min-h-[50vh]">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
         </div>
@@ -77,7 +75,7 @@ export default function ShopPage() {
 
   if (error) {
     return (
-      <div className="bg-white">
+      <div className="bg-slate-100">
         <div className="mt-24 flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Error loading products</h2>
@@ -89,7 +87,7 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="bg-white pb-12">
+    <div className="bg-slate-100 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

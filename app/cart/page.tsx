@@ -13,9 +13,9 @@ export default function CartPage() {
 
   if (state.items.length === 0) {
     return (
-      <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
-          <div className="text-center max-w-2xl mx-auto">
+      <div className="bg-slate-100 pb-12">
+        <div className="max-w-7xl mx-auto bg-slate-100 px-4 sm:px-6 lg:px-8 py-8 mt-24">
+          <div className="text-center max-w-2xl mx-auto bg-slate-100">
             <ShoppingBag className="w-16 h-16 mx-auto mb-6 text-gray-400" />
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-4">Your Cart is Empty</h1>
             <p className="text-lg text-gray-600 mb-8">
@@ -36,7 +36,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-4">Shopping Cart</h1>
@@ -131,7 +131,7 @@ export default function CartPage() {
             </div>
             <div className="space-y-3">
               <Button 
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white" 
+                className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" 
                 size="lg"
                 onClick={() => window.location.href = '/checkout'}
               >
@@ -139,7 +139,7 @@ export default function CartPage() {
               </Button>
               <Button
                 variant="outline"
-                className="w-full border-gray-200 text-gray-900 hover:bg-gray-100"
+                className="w-full border-gray-200 text-gray-900 hover:text-gray-900 hover:bg-gray-100 font-medium py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 size="lg"
                 onClick={() => window.location.href = '/shop'}
               >

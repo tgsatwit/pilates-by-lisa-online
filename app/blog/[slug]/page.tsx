@@ -39,7 +39,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <article className="min-h-screen bg-background pt-32 pb-32">
+    <article className="min-h-screen bg-slate-100 pt-32 pb-32">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">

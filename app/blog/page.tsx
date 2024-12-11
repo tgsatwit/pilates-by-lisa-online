@@ -78,7 +78,7 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pt-32">
+    <div className="min-h-screen bg-slate-100 pb-12 pt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

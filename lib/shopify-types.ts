@@ -91,4 +91,37 @@ export type ShopifyProductsResponse = {
       }
     }>
   }
+}
+
+// Type for checkout creation response
+export type ShopifyCheckoutResponse = {
+  checkoutCreate: {
+    checkout: {
+      id: string
+      webUrl: string
+      totalPriceV2: {
+        amount: string
+        currencyCode: string
+      }
+      lineItems: ShopifyConnection<{
+        id: string
+        title: string
+        quantity: number
+      }>
+    }
+    checkoutUserErrors: Array<{
+      code: string
+      field: string[]
+      message: string
+    }>
+  }
+}
+
+// Type for variant query response
+export type ShopifyVariantResponse = {
+  product?: {
+    variants: ShopifyConnection<{
+      id: string
+    }>
+  }
 } 

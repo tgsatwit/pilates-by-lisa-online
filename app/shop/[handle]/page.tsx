@@ -58,7 +58,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-white">
+      <div className="fixed inset-0 bg-slate-100">
         <div className="min-h-screen mt-24 flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
         </div>
@@ -75,7 +75,7 @@ export default function ProductPage({ params }: ProductPageProps) {
     : null
 
   return (
-    <div className="bg-white pb-12">
+    <div className="bg-slate-100 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
         {/* Breadcrumbs */}
         <nav className="flex mb-8 text-sm" aria-label="Breadcrumb">
@@ -190,9 +190,9 @@ export default function ProductPage({ params }: ProductPageProps) {
                   className="p-2 hover:bg-gray-100 transition-colors"
                   aria-label="Decrease quantity"
                 >
-                  <Minus className="w-4 h-4" />
+                  <Minus className="w-4 h-4 text-slate-900" />
                 </button>
-                <span className="px-4 py-2 min-w-[3rem] text-center">
+                <span className="px-4 py-2 min-w-[3rem] text-center text-slate-900">
                   {quantity}
                 </span>
                 <button
@@ -200,12 +200,12 @@ export default function ProductPage({ params }: ProductPageProps) {
                   className="p-2 hover:bg-gray-100 transition-colors"
                   aria-label="Increase quantity"
                 >
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-4 h-4 text-slate-500" />
                 </button>
               </div>
               <Button 
                 size="lg" 
-                className="bg-slate-900 hover:bg-slate-800 text-white sm:flex-1"
+                className="bg-slate-900 hover:bg-slate-800 text-white font-medium py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 onClick={handleAddToCart}
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
