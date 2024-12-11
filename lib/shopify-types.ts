@@ -1,28 +1,93 @@
-export interface ShopifyProduct {
+export type ShopifyImage = {
+  url: string
+  altText: string | null
+  width?: number
+  height?: number
+}
+
+export type Money = {
+  amount: string
+  currencyCode: string
+}
+
+export type ShopifyProduct = {
   id: string
   handle: string
   title: string
   description: string
-  createdAt: string
+  descriptionHtml: string
+  images: ShopifyImage[]
+  price: number
+  compareAtPrice: number | null
+  currencyCode: string
   tags: string[]
-  images: {
-    edges: Array<{
-      node: {
-        url: string
-        altText: string | null
+  isNew?: boolean
+  isSale?: boolean
+}
+
+export type ShopifyEdge<T> = {
+  node: T
+}
+
+export type ShopifyConnection<T> = {
+  edges: Array<ShopifyEdge<T>>
+}
+
+// Type for a single product query response
+export type ShopifyProductResponse = {
+  product?: {
+    id: string
+    handle: string
+    title: string
+    description: string
+    descriptionHtml: string
+    createdAt: string
+    tags: string[]
+    images?: ShopifyConnection<{
+      url: string
+      altText: string | null
+      width: number
+      height: number
+    }>
+    variants?: ShopifyConnection<{
+      price: {
+        amount: string
+        currencyCode: string
       }
+      compareAtPrice: {
+        amount: string
+      } | null
     }>
   }
-  variants: {
+}
+
+// Type for products list query response
+export type ShopifyProductsResponse = {
+  products: {
     edges: Array<{
       node: {
-        price: {
-          amount: string
-          currencyCode: string
-        }
-        compareAtPrice: {
-          amount: string
-        } | null
+        id: string
+        handle: string
+        title: string
+        description: string
+        descriptionHtml: string
+        createdAt: string
+        tags: string[]
+        images?: ShopifyConnection<{
+          url: string
+          altText: string | null
+          width: number
+          height: number
+        }>
+        variants?: ShopifyConnection<{
+          price: {
+            amount: string
+            currencyCode: string
+          }
+          compareAtPrice: {
+            amount: string
+          } | null
+        }>
       }
     }>
   }

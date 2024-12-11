@@ -3,11 +3,14 @@ export interface Product {
   handle: string
   title: string
   description: string
+  descriptionHtml: string
   price: number
   compareAtPrice: number | null
   images: Array<{
     url: string
     altText: string | null
+    width?: number
+    height?: number
   }>
   tags: string[]
   isNew: boolean
@@ -22,10 +25,12 @@ export interface CartItem {
   quantity: number
   images: Array<{
     url: string
-    altText?: string
+    altText: string | null
+    width?: number
+    height?: number
   }>
   currencyCode: string
-  compareAtPrice?: number | null
+  compareAtPrice: number | null
 }
 
 export interface CartState {
@@ -36,6 +41,7 @@ export interface CartState {
 export interface CartContextType {
   items: CartItem[]
   state: CartState
+  addToCart: (product: Product, quantity?: number) => void
   removeFromCart: (itemId: string) => void
   updateQuantity: (itemId: string, quantity: number) => void
 } 

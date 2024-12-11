@@ -1,41 +1,7 @@
 import { GraphQLClient } from 'graphql-request'
-import { ShopifyProduct } from '@/lib/shopify-types'
-
-interface ShopifyResponse {
-  products: {
-    edges: Array<{
-      node: {
-        id: string
-        handle: string
-        title: string
-        description: string
-        createdAt: string
-        tags: string[]
-        images: {
-          edges: Array<{
-            node: {
-              url: string
-              altText: string | null
-            }
-          }>
-        }
-        variants: {
-          edges: Array<{
-            node: {
-              price: {
-                amount: string
-                currencyCode: string
-              }
-              compareAtPrice: {
-                amount: string
-              } | null
-            }
-          }>
-        }
-      }
-    }>
-  }
-}
+import { ShopifyProductResponse, ShopifyProductsResponse } from '@/lib/shopify-types'
+import { transformShopifyProduct } from './transforms'
+import { Product } from '@/types'
 
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
@@ -53,7 +19,54 @@ const shopifyClient = new GraphQLClient(endpoint, {
   },
 })
 
-export async function getAllProducts(): Promise<{ products: { edges: Array<{ node: ShopifyProduct }> } }> {
+export async function getProductByHandle(handle: string): Promise<Product | null> {
+  const query = `
+    query ProductByHandle($handle: String!) {
+      product(handle: $handle) {
+        id
+        handle
+        title
+        description
+        descriptionHtml
+        createdAt
+        tags
+        images(first: 10) {
+          edges {
+            node {
+              url
+              altText
+              width
+              height
+            }
+          }
+        }
+        variants(first: 1) {
+          edges {
+            node {
+              price {
+                amount
+                currencyCode
+              }
+              compareAtPrice {
+                amount
+              }
+            }
+          }
+        }
+      }
+    }
+  `
+
+  try {
+    const response = await shopifyClient.request<ShopifyProductResponse>(query, { handle })
+    return transformShopifyProduct(response.product)
+  } catch (error) {
+    console.error('Error fetching product:', error)
+    return null
+  }
+}
+
+export async function getAllProducts(): Promise<Product[]> {
   const query = `
     query Products {
       products(first: 100) {
@@ -63,6 +76,7 @@ export async function getAllProducts(): Promise<{ products: { edges: Array<{ nod
             handle
             title
             description
+            descriptionHtml
             createdAt
             tags
             images(first: 10) {
@@ -70,6 +84,8 @@ export async function getAllProducts(): Promise<{ products: { edges: Array<{ nod
                 node {
                   url
                   altText
+                  width
+                  height
                 }
               }
             }
@@ -93,33 +109,13 @@ export async function getAllProducts(): Promise<{ products: { edges: Array<{ nod
   `
 
   try {
-    const response = await shopifyClient.request<ShopifyResponse>(query)
+    const response = await shopifyClient.request<ShopifyProductsResponse>(query)
     
-    return {
-      products: {
-        edges: response.products.edges.map(({ node }) => ({
-          node: {
-            id: node.id,
-            handle: node.handle,
-            title: node.title,
-            description: node.description,
-            createdAt: node.createdAt,
-            tags: node.tags,
-            images: node.images,
-            variants: node.variants
-          }
-        }))
-      }
-    }
+    return response.products.edges
+      .map(({ node }) => transformShopifyProduct(node))
+      .filter((product): product is Product => product !== null)
   } catch (error) {
     console.error('Error fetching products:', error)
-    throw error
+    return []
   }
-}
-
-function isNewProduct(publishedAt: string): boolean {
-  const publishDate = new Date(publishedAt)
-  const thirtyDaysAgo = new Date()
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
-  return publishDate > thirtyDaysAgo
 }

@@ -1,39 +1,41 @@
-import { ShopifyProduct } from "@/lib/shopify-types"
+import { ShopifyProductResponse } from "@/lib/shopify-types"
 import { Product } from "@/types"
 
-export function transformShopifyProduct(shopifyProduct: ShopifyProduct): Product {
-  // Get the first variant's price or default to "0"
-  const price = shopifyProduct.variants?.edges[0]?.node.price.amount || "0"
-  const compareAtPrice = shopifyProduct.variants?.edges[0]?.node.compareAtPrice?.amount || null
+export function transformShopifyProduct(shopifyProduct: ShopifyProductResponse['product']): Product | null {
+  if (!shopifyProduct) return null
 
-  // Transform images to expected format
-  const images = shopifyProduct.images?.edges.map((edge: { 
-    node: { 
-      url: string; 
-      altText: string | null 
-    } 
-  }) => ({
+  // Get the first variant's price or default to "0"
+  const firstVariant = shopifyProduct.variants?.edges[0]?.node ?? {
+    price: { amount: '0', currencyCode: 'USD' },
+    compareAtPrice: null
+  }
+
+  // Transform images to expected format, preserving dimensions
+  const images = shopifyProduct.images?.edges?.map(edge => ({
     url: edge.node.url,
-    altText: edge.node.altText
-  })) || []
+    altText: edge.node.altText,
+    width: edge.node.width,
+    height: edge.node.height
+  })) ?? []
 
   // Check if product is new (within last 30 days)
   const isNew = new Date(shopifyProduct.createdAt) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
 
   // Check if product is on sale
-  const isSale = compareAtPrice !== null && parseFloat(compareAtPrice) > parseFloat(price)
+  const isSale = firstVariant.compareAtPrice !== null
 
   return {
     id: shopifyProduct.id,
     handle: shopifyProduct.handle,
     title: shopifyProduct.title,
     description: shopifyProduct.description,
-    price: parseFloat(price),
-    compareAtPrice: compareAtPrice ? parseFloat(compareAtPrice) : null,
+    descriptionHtml: shopifyProduct.descriptionHtml,
     images,
-    tags: shopifyProduct.tags || [],
+    price: parseFloat(firstVariant.price.amount),
+    compareAtPrice: firstVariant.compareAtPrice ? parseFloat(firstVariant.compareAtPrice.amount) : null,
+    currencyCode: firstVariant.price.currencyCode,
+    tags: shopifyProduct.tags,
     isNew,
-    isSale,
-    currencyCode: shopifyProduct.variants?.edges[0]?.node.price.currencyCode || 'USD'
+    isSale
   }
 } 

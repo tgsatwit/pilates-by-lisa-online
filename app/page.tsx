@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-slate-100">
+    <div className="flex flex-col">
       <Hero />
       <TestimonialsSection />
       <FeatureTabs />
