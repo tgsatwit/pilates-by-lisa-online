@@ -20,6 +20,17 @@ import TestimonialsCarousel from "@/components/landing/testimonials-carousel"
 import Testimonials from "@/components/landing/testimonials"
 import Cta from "@/components/landing/cta"
 import Pricing from "./landing/pricing-section"
+import Section01 from '@/components/section-01'
+import Section02 from '@/components/section-02'
+import Section03 from '@/components/section-03'
+import Section04 from '@/components/section-04'
+import Section05 from '@/components/section-05'
+import Section06 from '@/components/section-06'
+import Section07 from '@/components/section-07'
+import Faqs from '@/components/faqs'
+//import Cta2 from '@/components/cta' //Removed duplicate import
+
+
 
 export const metadata = {
   title: 'Pilates by Lisa | Transform Your Practice',
@@ -52,6 +63,15 @@ export default function Home() {
       <Explainer />
       <FaqSection />
       <CtaSection />
+      <Section01 />
+      <Section02 />
+      <Section03 />
+      <Section04 />
+      <Section05 />
+      <Section06 />
+      <Section07 />
+      <Faqs />
+      {/* <Cta2 /> */} {/*Removed duplicate component */}
     </div>
   )
 }
