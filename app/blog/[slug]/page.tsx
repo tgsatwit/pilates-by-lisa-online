@@ -34,7 +34,7 @@ const post = {
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default function BlogPost({ params }: { params: { slug: string } } & PageProps) {
   if (params.slug !== post.slug) {
     notFound()
   }
