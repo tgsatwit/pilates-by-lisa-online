@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 import { getAllProducts } from "@/lib/shopify"
 import { useQuery } from "@tanstack/react-query"
 import { useCart } from "@/components/cart/cart-context"
-import { Product } from "@/types"
+import { ShopifyProduct as Product } from "@/lib/shopify-types"
 
 const PRODUCTS_PER_PAGE = 6
 

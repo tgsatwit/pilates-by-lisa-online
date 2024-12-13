@@ -1,6 +1,7 @@
 "use client"
 
 import { useCart } from '@/components/cart/cart-context';
+import type { CartItem } from '@/types/index';
 import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/lib/utils"
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
@@ -47,7 +48,7 @@ export default function CartPage() {
 
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
-            {state.items.map((item) => (
+            {state.items.map((item: CartItem) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}

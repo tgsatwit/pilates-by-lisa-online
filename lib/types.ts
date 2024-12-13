@@ -2,12 +2,18 @@ import { ShopifyProduct } from './shopify-types'
 
 export interface CartItem {
   id: string
+  handle: string
   title: string
   price: number
   quantity: number
-  image: string | undefined
-  variantId: string | undefined
+  images: Array<{
+    url: string
+    altText: string | null
+    width?: number
+    height?: number
+  }>
   currencyCode: string
+  compareAtPrice: number | null
 }
 
 export interface CartState {

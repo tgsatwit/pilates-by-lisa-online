@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useCart } from "@/components/cart/cart-context"
+import type { CartItem } from '@/types/index';
 import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/lib/utils"
 import { motion } from "framer-motion"
@@ -22,7 +23,7 @@ export default function CheckoutPage() {
 
       // Get variant IDs for all items
       const checkoutItems = await Promise.all(
-        items.map(async (item) => {
+        items.map(async (item: CartItem) => {
           const variantId = await getProductVariant(item.handle)
           if (!variantId) {
             throw new Error(`Could not find variant for product: ${item.title}`)
@@ -89,7 +90,7 @@ export default function CheckoutPage() {
             <div className="p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-6">Order Summary</h2>
               <div className="space-y-6">
-                {items.map((item) => (
+                {items.map((item: CartItem) => (
                   <motion.div
                     key={item.id}
                     initial={{ opacity: 0, y: 20 }}

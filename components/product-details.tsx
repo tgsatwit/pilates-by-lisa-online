@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { formatPrice, type ShopifyProduct } from '@/lib/utils';
+import { formatPrice } from '@/lib/utils';
+import type { ShopifyProduct } from '@/lib/shopify-types';
 import { useCart } from '@/components/cart/cart-context';
 
 interface ProductDetailsProps {
@@ -13,7 +14,7 @@ interface ProductDetailsProps {
 export function ProductDetails({ product }: ProductDetailsProps) {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
   const [isLoading, setIsLoading] = useState(false);
-  const { addItem } = useCart();
+  const { addToCart } = useCart();
 
   const handleBuyNow = async () => {
     try {
@@ -29,7 +30,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
   };
 
   const handleAddToCart = () => {
-    addItem(product);
+    addToCart(product);
   };
 
   return (

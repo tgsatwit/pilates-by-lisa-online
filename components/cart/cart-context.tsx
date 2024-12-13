@@ -1,7 +1,8 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { CartItem, CartContextType, CartState, Product } from '@/types'
+import type { CartItem, CartState, CartContextType } from '@/lib/types'
+import type { ShopifyProduct as Product } from '@/lib/shopify-types'
 
 const CART_STORAGE_KEY = 'pilates-by-lisa-cart'
 

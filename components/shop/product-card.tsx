@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react"
 import { formatPrice, cn } from "@/lib/utils"
-import { Product } from "@/types"
+import type { ShopifyProduct as Product } from "@/lib/shopify-types"
 import { useCart } from "@/components/cart/cart-context"
 
 interface ProductCardProps {

@@ -113,7 +113,7 @@ export default function Hero() {
                   <div className="text-xs text-slate-500 font-medium">+120K</div>
                 </div>
               </div>
-
+            </div>
 
             {/* Image */}
             <div className="max-w-sm mx-auto md:max-w-none md:absolute md:left-[40rem] md:top-1/2 md:-translate-y-1/2 md:ml-8 lg:ml-20 xl:ml-32">
