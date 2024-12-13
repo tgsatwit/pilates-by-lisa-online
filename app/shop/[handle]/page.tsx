@@ -13,6 +13,7 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { getProductByHandle } from "@/lib/shopify"
 import { Product } from "@/types/index"
+import { transformToCartProduct } from '@/lib/transforms'
 
 interface ProductPageProps {
   params: Promise<{ handle: string }>
@@ -32,8 +33,9 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   const handleAddToCart = () => {
     if (product) {
-      addToCart(product, quantity)
-      setQuantity(1) // Reset quantity after adding to cart
+      const cartProduct = transformToCartProduct(product)
+      addToCart(cartProduct, quantity)
+      setQuantity(1)
     }
   }
 
@@ -127,7 +129,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             {/* Thumbnail Gallery */}
             {product.images.length > 1 && (
               <div className="grid grid-cols-5 gap-2">
-                {product.images.map((image: { url: string; altText: string | null; width?: number; height?: number }, index: number) => (
+                {product.images.map((image, index) => (
                   <button
                     key={image.url}
                     onClick={() => setCurrentImageIndex(index)}

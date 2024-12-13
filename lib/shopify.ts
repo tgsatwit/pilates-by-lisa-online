@@ -6,7 +6,7 @@ import {
   ShopifyVariantResponse
 } from '@/lib/shopify-types'
 import { transformShopifyProduct } from './transforms'
-import { Product } from '@/types'
+import { Product } from '@/types/index'
 
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
@@ -64,7 +64,32 @@ export async function getProductByHandle(handle: string): Promise<Product | null
 
   try {
     const response = await shopifyClient.request<ShopifyProductResponse>(query, { handle })
-    return transformShopifyProduct(response.product)
+    if (response.product) {
+      const transformedProduct = transformShopifyProduct({
+        ...response.product,
+        price: parseFloat(response.product.variants?.edges[0]?.node?.price?.amount || '0'),
+        compareAtPrice: response.product.variants?.edges[0]?.node?.compareAtPrice?.amount 
+          ? parseFloat(response.product.variants?.edges[0]?.node?.compareAtPrice?.amount)
+          : null,
+        currencyCode: response.product.variants?.edges[0]?.node?.price?.currencyCode || 'USD',
+        images: response.product.images?.edges.map(edge => ({
+          url: edge.node.url,
+          altText: edge.node.altText,
+          width: edge.node.width,
+          height: edge.node.height
+        })) || []
+      })
+      if (transformedProduct) {
+        return {
+          ...transformedProduct,
+          isNew: transformedProduct.isNew ?? false,
+          price: transformedProduct.price || 0,
+          compareAtPrice: transformedProduct.compareAtPrice || null,
+          currencyCode: transformedProduct.currencyCode || 'USD'
+        } as Product
+      }
+    }
+    return null
   } catch (error) {
     console.error('Error fetching product:', error)
     return null
@@ -117,7 +142,34 @@ export async function getAllProducts(): Promise<Product[]> {
     const response = await shopifyClient.request<ShopifyProductsResponse>(query)
     
     return response.products.edges
-      .map(({ node }) => transformShopifyProduct(node))
+      .map(({ node }) => {
+        if (node && node.variants && node.variants.edges.length > 0) {
+          const transformedProduct = transformShopifyProduct({
+            ...node,
+            price: parseFloat(node.variants?.edges[0]?.node?.price?.amount || '0'),
+            compareAtPrice: node.variants?.edges[0]?.node?.compareAtPrice?.amount 
+              ? parseFloat(node.variants?.edges[0]?.node?.compareAtPrice?.amount)
+              : null,
+            currencyCode: node.variants?.edges[0]?.node?.price?.currencyCode || 'USD',
+            images: node.images?.edges.map(edge => ({
+              url: edge.node.url,
+              altText: edge.node.altText,
+              width: edge.node.width,
+              height: edge.node.height
+            })) || []
+          })
+          if (transformedProduct) {
+            return {
+              ...transformedProduct,
+              isNew: transformedProduct.isNew ?? false,
+              price: transformedProduct.price || 0,
+              compareAtPrice: transformedProduct.compareAtPrice || null,
+              currencyCode: transformedProduct.currencyCode || 'USD'
+            } as Product
+          }
+        }
+        return null
+      })
       .filter((product): product is Product => product !== null)
   } catch (error) {
     console.error('Error fetching products:', error)

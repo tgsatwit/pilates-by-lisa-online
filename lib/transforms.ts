@@ -1,41 +1,68 @@
-import { ShopifyProductResponse } from "@/lib/shopify-types"
-import { Product } from "@/types"
+import type { ShopifyProduct as ShopifyAPIProduct } from '@/lib/shopify-types'
 
-export function transformShopifyProduct(shopifyProduct: ShopifyProductResponse['product']): Product | null {
-  if (!shopifyProduct) return null
+// Our application's Product type
+export interface Product {
+  id: string
+  handle: string
+  title: string
+  description: string
+  descriptionHtml: string
+  price: number
+  compareAtPrice: number | null
+  currencyCode: string
+  images: Array<{
+    url: string
+    altText: string | null
+    width?: number
+    height?: number
+  }>
+  tags: string[]
+  isNew: boolean
+}
 
-  // Get the first variant's price or default to "0"
-  const firstVariant = shopifyProduct.variants?.edges[0]?.node ?? {
-    price: { amount: '0', currencyCode: 'USD' },
-    compareAtPrice: null
-  }
-
-  // Transform images to expected format, preserving dimensions
-  const images = shopifyProduct.images?.edges?.map(edge => ({
-    url: edge.node.url,
-    altText: edge.node.altText,
-    width: edge.node.width,
-    height: edge.node.height
-  })) ?? []
-
+export function transformShopifyProduct(shopifyProduct: ShopifyAPIProduct): Product {
   // Check if product is new (within last 30 days)
-  const isNew = new Date(shopifyProduct.createdAt) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
-
-  // Check if product is on sale
-  const isSale = firstVariant.compareAtPrice !== null
-
+  // Temporarily disable isNew until we can confirm the API structure
+  const isNew = false
+  
   return {
     id: shopifyProduct.id,
     handle: shopifyProduct.handle,
     title: shopifyProduct.title,
     description: shopifyProduct.description,
     descriptionHtml: shopifyProduct.descriptionHtml,
-    images,
-    price: parseFloat(firstVariant.price.amount),
-    compareAtPrice: firstVariant.compareAtPrice ? parseFloat(firstVariant.compareAtPrice.amount) : null,
-    currencyCode: firstVariant.price.currencyCode,
-    tags: shopifyProduct.tags,
-    isNew,
-    isSale
+    // Convert string to number for our internal use
+    price: Number(shopifyProduct.price),
+    compareAtPrice: shopifyProduct.compareAtPrice ? Number(shopifyProduct.compareAtPrice) : null,
+    currencyCode: shopifyProduct.currencyCode,
+    // Map Shopify images to our format
+    images: shopifyProduct.images.map(image => ({
+      url: image.url,
+      altText: image.altText,
+      width: image.width,
+      height: image.height
+    })),
+    tags: shopifyProduct.tags || [],
+    isNew
+  }
+}
+
+export function transformToCartProduct(product: Product): ShopifyAPIProduct {
+  return {
+    id: product.id,
+    handle: product.handle,
+    title: product.title,
+    description: product.description,
+    descriptionHtml: product.descriptionHtml,
+    price: Number(product.price),
+    compareAtPrice: product.compareAtPrice,
+    currencyCode: product.currencyCode,
+    images: product.images.map(image => ({
+      url: image.url,
+      altText: image.altText,
+      width: image.width,
+      height: image.height
+    })),
+    tags: product.tags
   }
 } 
