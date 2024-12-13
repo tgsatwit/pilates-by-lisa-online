@@ -9,10 +9,10 @@ import { ShoppingCart, Plus, Minus } from "lucide-react"
 import { formatPrice, cn } from "@/lib/utils"
 import { useCart } from "@/components/cart/cart-context"
 import { motion } from "framer-motion"
-import { Product } from "@/types"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 import { getProductByHandle } from "@/lib/shopify"
+import { Product } from "@/types/index"
 
 interface ProductPageProps {
   params: Promise<{ handle: string }>
@@ -127,7 +127,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             {/* Thumbnail Gallery */}
             {product.images.length > 1 && (
               <div className="grid grid-cols-5 gap-2">
-                {product.images.map((image, index) => (
+                {product.images.map((image: { url: string; altText: string | null; width?: number; height?: number }, index: number) => (
                   <button
                     key={image.url}
                     onClick={() => setCurrentImageIndex(index)}
@@ -158,7 +158,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             className="flex flex-col"
           >
             <div className="flex flex-wrap gap-2 mb-4">
-              {product.tags.map((tag) => (
+              {product.tags.map((tag: string) => (
                 <Badge 
                   key={tag} 
                   variant="outline"

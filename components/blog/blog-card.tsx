@@ -28,7 +28,8 @@ export function BlogCard({ post, index }: BlogCardProps) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="group relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-100"
     >
-      <Link href={`/blog/${post.slug}`}>
+    <Link href={`/blog/${post.slug}`}>
+      <a>
         <div className="relative h-64 overflow-hidden">
           <Image
             src={post.coverImage}
@@ -72,7 +73,8 @@ export function BlogCard({ post, index }: BlogCardProps) {
             </div>
           </div>
         </div>
-      </Link>
+      </a>
+    </Link>
     </motion.div>
   )
 }

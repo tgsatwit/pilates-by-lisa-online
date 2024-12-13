@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button"
 import { BlogCard } from "@/components/blog/blog-card"
 import { Search } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "@/firebaseConfig"
+import { BlogPost } from "@/types"
 
 const tags = [
   "All",
@@ -19,34 +22,23 @@ const tags = [
   "Technique"
 ]
 
-const posts = [
-  {
-    slug: "the-five-minute-rule",
-    title: "The Five Minute Rule: The Ultimate Workout Motivation!",
-    excerpt: "Finding it difficult to get motivated to workout? You need the five minute rule! Today I'll be sharing with you the quickest, easiest and most effective mind hack...",
-    coverImage: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f",
-    date: "2024-03-20",
-    tags: ["Fitness", "Mindfulness"],
-    readingTime: "5 min read"
-  },
-  {
-    slug: "how-to-stay-fit-when-busy",
-    title: "How to Stay Fit When You Have A Demanding Schedule",
-    excerpt: "Maintaining your fitness and health should be one of your top priorities in life, but that doesn't necessarily mean it's easy! Work, social commitments...",
-    coverImage: "https://images.unsplash.com/photo-1518611012118-696072aa579a",
-    date: "2024-03-18",
-    tags: ["Wellness", "Fitness"],
-    readingTime: "4 min read"
-  },
-  // Add more sample posts here
-]
-
 const POSTS_PER_PAGE = 6
 
 export default function BlogPage() {
   const [selectedTag, setSelectedTag] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
+  const [posts, setPosts] = useState<BlogPost[]>([])
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const querySnapshot = await getDocs(collection(db, "posts"))
+      const postsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as BlogPost[]
+      setPosts(postsData)
+    }
+
+    fetchPosts()
+  }, [])
 
   // Filter posts based on search query and selected tag
   const filteredPosts = useMemo(() => {
@@ -57,7 +49,7 @@ export default function BlogPage() {
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
       return matchesTag && matchesSearch
     })
-  }, [selectedTag, searchQuery])
+  }, [selectedTag, searchQuery, posts])
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)
