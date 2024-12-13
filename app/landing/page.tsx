@@ -14,7 +14,7 @@ import Cta from "@/components/landing/cta";
 import FeaturesHome02 from "@/components/landing/features-home-02";
 import FeaturesHome from "@/components/landing/features-home";
 import Explainer from "@/components/landing/explainer";
-import Features001 from "@/components/landing/features-001";
+import Features001 from "@/components/features-pbl-variety";
 
 export default function Home() {
   return (

@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-export function CtaSection() {
+export function PBLCTASection() {
   return (
     <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-primary/10" />

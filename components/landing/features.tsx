@@ -99,7 +99,7 @@ const Features: FC = () => {
                       </div>
                       {/* Icons */}
                       <div className="relative flex items-center justify-center w-16 h-16">
-                        <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.68,-0.3,0.32,1)] transform ${
+                        <div className={`absolute transition-all duration-700 ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; transform ${
                           tab === 1 ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-[60deg]'
                         }`}>
                           <div className="relative flex items-center justify-center w-16 h-16 border border-transparent rounded-2xl shadow-2xl -rotate-[14deg] [background:linear-gradient(theme(colors.gray.100),_theme(colors.gray.100))_padding-box,_conic-gradient(theme(colors.gray.400),_theme(colors.gray.700)_25%,_theme(colors.gray.700)_75%,_theme(colors.gray.400)_100%)_border-box] before:absolute before:inset-0 before:bg-gray-200/30 before:rounded-2xl">
@@ -109,7 +109,7 @@ const Features: FC = () => {
                           </div>
                         </div>
 
-                        <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.68,-0.3,0.32,1)] transform ${
+                        <div className={`absolute transition-all duration-700 ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; transform ${
                           tab === 2 ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-[60deg]'
                         }`}>
                           <div className="relative flex items-center justify-center w-16 h-16 border border-transparent rounded-2xl shadow-2xl -rotate-[14deg] [background:linear-gradient(theme(colors.gray.100),_theme(colors.gray.100))_padding-box,_conic-gradient(theme(colors.gray.400),_theme(colors.gray.700)_25%,_theme(colors.gray.700)_75%,_theme(colors.gray.400)_100%)_border-box] before:absolute before:inset-0 before:bg-gray-200/30 before:rounded-2xl">
@@ -119,7 +119,7 @@ const Features: FC = () => {
                           </div>
                         </div>
 
-                        <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.68,-0.3,0.32,1)] transform ${
+                        <div className={`absolute transition-all duration-700 ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; transform ${
                           tab === 3 ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-[60deg]'
                         }`}>
                           <div className="relative flex items-center justify-center w-16 h-16 border border-transparent rounded-2xl shadow-2xl -rotate-[14deg] [background:linear-gradient(theme(colors.gray.100),_theme(colors.gray.100))_padding-box,_conic-gradient(theme(colors.gray.400),_theme(colors.gray.700)_25%,_theme(colors.gray.700)_75%,_theme(colors.gray.400)_100%)_border-box] before:absolute before:inset-0 before:bg-gray-200/30 before:rounded-2xl">

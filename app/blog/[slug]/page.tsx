@@ -34,7 +34,11 @@ const post = {
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } } & PageProps) {
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string }
+}) {
   if (params.slug !== post.slug) {
     notFound()
   }
@@ -109,4 +113,15 @@ export default function BlogPost({ params }: { params: { slug: string } } & Page
       </div>
     </div>
   )
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  return {
+    title: post.title,
+    description: post.excerpt,
+  }
 }

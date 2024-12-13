@@ -57,19 +57,12 @@ export function MobileAppSection() {
               ))}
             </div>
 
-            <Link 
-              href="https://apps.apple.com/your-app-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/images/app-store-badge.svg"
-                alt="Download on the App Store"
-                width={140}
-                height={42}
-                className="hover:opacity-90 transition-opacity"
-              />
-            </Link>
+            <div>
+              <a className="btn-sm w-full inline-flex items-center text-white bg-slate-700 hover:bg-slate-800 shadow-sm relative before:absolute before:inset-0 before:bg-blue-400 before:bg-opacity-60 before:-z-10 before:rounded-full"
+                    href="#0">
+                Get in touch
+              </a>
+            </div>
           </motion.div>
 
           {/* App Screenshots */}

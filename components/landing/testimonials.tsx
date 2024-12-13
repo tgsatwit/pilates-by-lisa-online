@@ -77,7 +77,7 @@ const Testimonials: FC = () => {
                 {items.map((item, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 h-full -z-10 transition-all duration-700 ease-[cubic-bezier(0.68,-0.3,0.32,1)] transform ${
+                    className={`absolute inset-0 h-full -z-10 transition-all duration-700 ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; transform ${
                       active === index 
                         ? 'opacity-100 rotate-0' 
                         : 'opacity-0 -rotate-[60deg]'
