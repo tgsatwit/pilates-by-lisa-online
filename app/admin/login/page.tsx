@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Image from 'next/image'
 import Cookies from 'js-cookie'
-import { useForm } from 'react-hook-form'
+import { useForm, FieldError } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
@@ -25,6 +25,11 @@ export default function AdminLoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema)
   })
+
+  const formClasses = (error?: FieldError) =>
+    `w-full rounded-lg border p-3 text-gray-700 focus:outline-none focus:ring-2 ${
+      error ? 'border-red-500' : 'border-gray-300'
+    }`;
 
   const onSubmit = async (data: LoginForm) => {
     try {
@@ -71,9 +76,9 @@ export default function AdminLoginPage() {
             <div>
               <Input
                 type="email"
+                className={formClasses(errors.email)}
                 placeholder="Email address"
                 {...register('email')}
-                className={errors.email ? 'border-red-500' : ''}
               />
               {errors.email && (
                 <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
@@ -83,9 +88,9 @@ export default function AdminLoginPage() {
             <div>
               <Input
                 type="password"
+                className={formClasses(errors.password)}
                 placeholder="Password"
                 {...register('password')}
-                className={errors.password ? 'border-red-500' : ''}
               />
               {errors.password && (
                 <p className="mt-1 text-xs text-red-500">{errors.password.message}</p>
@@ -95,7 +100,7 @@ export default function AdminLoginPage() {
 
           <Button 
             type="submit" 
-            className="w-full"
+            className="w-full text-slate-500"
             disabled={isLoading}
           >
             {isLoading ? 'Signing in...' : 'Sign in'}

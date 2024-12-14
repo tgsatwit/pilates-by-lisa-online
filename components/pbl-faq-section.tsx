@@ -33,24 +33,15 @@ const faqs = [
 
 export function PBLFAQSection() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-          >
+          <h2 className="h2 font-playfair-display text-gray-900 mb-4">
             Frequently Asked Questions
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-gray-600"
-          >
+          </h2>
+          <p className="text-lg text-center text-slate-700 mb-8">
             Everything you need to know about Pilates by Lisa
-          </motion.p>
+          </p>
         </div>
 
         <motion.div 
@@ -62,10 +53,10 @@ export function PBLFAQSection() {
           <Accordion type="single" collapsible>
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left text-slate-900">
+                <AccordionTrigger className="text-left text-lg text-slate-800">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600">
+                <AccordionContent className="text-slate-600 text-lg">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

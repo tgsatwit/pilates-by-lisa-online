@@ -30,15 +30,27 @@ export default function Header() {
   return (
     <header className={`fixed w-full z-30 transition-colors duration-300 ${isScrolled ? 'bg-slate-900' : 'bg-slate-900'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          
+          {/* Left group - Mobile menu and Logo */}
+          <div className="flex items-center">
+            <div className="md:hidden mr-3 flex items-center">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-white flex items-center justify-center"
+                aria-label="Toggle mobile menu"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
 
-          {/* Site branding - reduced size */}
-          <div className="flex-initial md:scale-[0.8] transform-gpu origin-left">
-            <Logo />
+            <div className="flex-initial md:scale-[0.8] transform-gpu origin-left flex items-center">
+              <Logo />
+            </div>
           </div>
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
+          {/* Desktop navigation - centered vertically */}
+          <nav className="hidden md:flex md:grow items-center">
             <ul className="flex grow justify-center flex-wrap items-center">
               {mobileLinks.map((link, index) => (
                 <li key={index}>
@@ -53,31 +65,22 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Desktop sign in links */}
-          <ul className="flex-initial flex justify-end items-center">
-            <li className="mr-2 md:mr-4">
-              <div className="scale-75 md:scale-100">
+          {/* Right side items - aligned */}
+          <ul className="flex items-center space-x-3 md:space-x-4">
+            <li>
+              <div className="scale-[1] md:scale-110 flex items-center">
                 <CartSheet />
               </div>
             </li>
-            <li className="hidden md:block">
+            <li>
               <Link 
-                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-1.5 px-3 md:py-2 md:px-5 text-xs md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none" 
+                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-2 px-4 md:py-2.5 md:px-6 text-sm md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none flex items-center" 
                 href="/signup"
               >
                 <span className="relative inline-flex items-center">
                   Get Started <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                 </span>
               </Link>
-            </li>
-            <li className="ml-2 md:hidden">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white p-2"
-                aria-label="Toggle mobile menu"
-              >
-                <Menu className="h-6 w-6" />
-              </button>
             </li>
           </ul>
 
@@ -91,8 +94,8 @@ export default function Header() {
       >
         <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
         <div 
-          className={`fixed top-0 right-0 bottom-0 w-full sm:w-[380px] max-w-[90vw] bg-slate-800 transform transition-transform duration-300 ease-in-out ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed top-0 left-0 bottom-0 w-full sm:w-[380px] max-w-[90vw] bg-slate-800 transform transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
           <div className="overflow-y-auto h-full">

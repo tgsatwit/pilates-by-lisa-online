@@ -19,7 +19,7 @@ export default function Section03() {
               {/* Content */}
               <div className="w-[512px] max-w-full shrink-0 md:order-1">
                 {/* Copy */}
-                <h2 className="h2 mb-4" data-aos="fade-up" data-aos-anchor="[data-aos-id-3]" data-aos-delay="100">
+                <h2 className="h2 h2 font-playfair-display text-slate-900 mb-4" data-aos="fade-up" data-aos-anchor="[data-aos-id-3]" data-aos-delay="100">
                   Spend your money everwhere, pay anyone effortlessy
                 </h2>
                 <p className="text-lg text-slate-500 mb-8" data-aos="fade-up" data-aos-anchor="[data-aos-id-3]" data-aos-delay="200">

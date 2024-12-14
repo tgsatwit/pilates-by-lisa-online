@@ -30,24 +30,15 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-          >
-            Loved by Members Worldwide
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-gray-600"
-          >
-            Join thousands of satisfied members who have transformed their practice with Pilates by Lisa
-          </motion.p>
+        <h2 className="h2 font-playfair-display text-gray-900 mb-4">
+        Loved by Members Worldwide
+          </h2>
+          <p className="text-lg text-center text-slate-700 mb-8">
+          Join thousands of satisfied members from around the world who have transformed their bodies and lives with Pilates by Lisa
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

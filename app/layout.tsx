@@ -51,8 +51,8 @@ export default function RootLayout({
         <CartProvider>
           <Providers>
             <div className="flex min-h-screen flex-col overflow-hidden">
-              <BgShapes />
-              <Header />
+            <Header />
+            <BgShapes />
               <main>{children}</main>
               <Footer />
             </div>

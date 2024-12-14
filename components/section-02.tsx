@@ -21,7 +21,7 @@ export default function Section02() {
               <div className="md:max-w-lg">
 
                 {/* Copy */}
-                <h2 className="h2 text-white mb-4" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="100">
+                <h2 className="h2 font-playfair-display text-white mb-4" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="100">
                   Build a flexible card program for your business needs
                 </h2>
                 <p className="text-lg text-slate-400 mb-8" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="200">
