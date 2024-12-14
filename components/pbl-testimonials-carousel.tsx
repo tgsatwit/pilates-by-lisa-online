@@ -10,8 +10,8 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-import Particles from './particles'
-import Highlighter, { HighlighterItem } from './highlighter'
+import Particles from './landing/particles'
+import Highlighter, { HighlighterItem } from './landing/highlighter'
 
 import CarouselImg01 from '@/public/images/carousel-icon-01.svg'
 import CarouselImg02 from '@/public/images/carousel-icon-02.svg'

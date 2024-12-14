@@ -62,10 +62,10 @@ export function PBLFAQSection() {
           <Accordion type="single" collapsible>
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
+                <AccordionTrigger className="text-left text-slate-900">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent className="text-slate-600">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

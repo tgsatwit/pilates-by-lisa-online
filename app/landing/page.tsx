@@ -3,10 +3,10 @@ export const metadata = {
   description: "Page description",
 };
 
-import Hero from "@/components/landing/hero";
+import Hero from "@/components/pbl-hero";
 import Features02 from "@/components/landing/features-02";
 import Features03 from "@/components/landing/features-03";
-import TestimonialsCarousel from "@/components/landing/testimonials-carousel";
+import TestimonialsCarousel from "@/components/pbl-testimonials-carousel";
 import Features04 from "@/components/landing/features-04";
 import Pricing from "./pricing-section";
 import Testimonials from "@/components/landing/testimonials";
@@ -14,7 +14,7 @@ import Cta from "@/components/landing/cta";
 import FeaturesHome02 from "@/components/landing/features-home-02";
 import FeaturesHome from "@/components/landing/features-home";
 import Explainer from "@/components/landing/explainer";
-import Features001 from "@/components/features-pbl-variety";
+import Features001 from "@/components/pbl-features-variety";
 
 export default function Home() {
   return (

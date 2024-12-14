@@ -12,11 +12,13 @@ import type { CartItem } from "@/lib/types"
 import { useState } from "react"
 import { createCheckout, getProductVariant } from "@/lib/shopify"
 import Link from "next/link"
+import { useRouter } from 'next/navigation'
 
 export function CartSheet() {
   const { items, state, removeFromCart, updateQuantity } = useCart()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
   
   const itemCount = items.reduce((total: number, item: CartItem) => total + item.quantity, 0)
   const subtotal = state.total
@@ -182,15 +184,14 @@ export function CartSheet() {
                     'Checkout'
                   )}
                 </Button>
-                <Link href="/shop" passHref>
-                  <Button
-                    variant="outline"
-                    className="w-full border-gray-200 text-gray-900 hover:text-gray-900 hover:bg-gray-100 font-medium py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-                    size="default"
-                  >
-                    Continue Shopping
-                  </Button>
-                </Link>
+                <Button
+                  variant="outline"
+                  className="w-full border-gray-200 text-gray-900 hover:text-gray-900 hover:bg-gray-100 font-medium py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                  size="default"
+                  onClick={() => router.push('/shop')}
+                >
+                  Continue Shopping
+                </Button>
               </div>
             </div>
           </>
@@ -198,14 +199,13 @@ export function CartSheet() {
           <div className="flex h-full flex-col items-center justify-center space-y-2.5">
             <ShoppingCart className="h-12 w-12 text-gray-400" />
             <span className="text-base font-medium text-gray-900">Your cart is empty</span>
-            <Link href="/shop" passHref>
-              <Button
-                variant="link"
-                className="text-sm text-gray-600 hover:text-gray-900 font-medium py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                Continue shopping
-              </Button>
-            </Link>
+            <Button
+              variant="link"
+              className="text-sm text-gray-600 hover:text-gray-900 font-medium py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              onClick={() => router.push('/shop')}
+            >
+              Continue shopping
+            </Button>
           </div>
         )}
       </SheetContent>

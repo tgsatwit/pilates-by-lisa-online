@@ -1,8 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { useState } from "react"
 
 export function FreeWorkoutSection() {
@@ -19,7 +16,7 @@ export function FreeWorkoutSection() {
           <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
             Try PBL for FREE!
           </div>
-          <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">You've got nothing to lose!</h2>
+          <h2 className="h2 font-playfair-display bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">You've got nothing to lose!</h2>
           <p className="text-lg text-slate-400 mb-8">You'll be amazed how amazing you feel after just one workout! Simply enter your email, press play and workout. The workout is a member favourite, and the best part, it's FREE for you to try, no credit card required!</p>
           <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
             <iframe 

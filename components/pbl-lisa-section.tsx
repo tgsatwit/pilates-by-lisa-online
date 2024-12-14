@@ -34,9 +34,7 @@ export function LisaSection() {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Who is Lisa?
-            </h2>
+            <h2 className="h2 font-playfair-display bg-clip-text text-transparent bg-gradient-to-r from-purple-500/80 via-purple-500 to-purple-500/60 pb-4">Who is Lisa?</h2>
 
             <div className="space-y-4 text-gray-600">
               <p>

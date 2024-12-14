@@ -30,7 +30,7 @@ export default function FeaturesPBLVariety() {
       const carousel = new Swiper(carouselRef.current, {
         slidesPerView: 'auto',
         grabCursor: true,
-        loop: false,
+        loop: true,
         centeredSlides: false,
         initialSlide: 0,
         spaceBetween: 24,
@@ -57,8 +57,8 @@ export default function FeaturesPBLVariety() {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="text-center px-10 pb-12 md:pb-16">
-            <h2 className="h2 font-cabinet-grotesk text-gray-900 mb-4">Discover the Best Online Pilates and Reformer Workouts tailored to your needs, experience & mood</h2>
-            <p className="text-lg text-center text-slate-700 mb-8">We're your go-to for online Pilates and reformer workouts. With my decade-long experience in delivering high-quality, fully-instructed online Pilates workouts, dive into a library of over 800 premium classes. From 5-minute stretches to full-length sessions, we cater to your mood, needs, and schedule. Join us and transform your fitness journey with expert-guided Pilates, anytime, anywhere.</p>
+            <h2 className="h2 font-playfair-display text-gray-900 mb-4">Discover the Best Online Pilates and Reformer Workouts tailored to you!</h2>
+            <p className="text-lg text-center text-slate-700 mb-8">As a mum and busy professional, I know every day is different, so you can choose from our library of over 800 premium classed - from 5-minute stretches to full-length sessions. A library built over a decade of our experience in delivering high-quality, fully-instructed online Pilates workouts. We cater to your mood, needs and schedule.</p>
 
           </div>
 

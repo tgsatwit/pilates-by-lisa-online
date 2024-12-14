@@ -4,8 +4,7 @@ import './globals.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import BgShapes from '@/components/landing/bg-shapes'
-import { Inter } from 'next/font/google'
-import { Playfair_Display } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 
 import { useEffect } from 'react'
 
@@ -16,13 +15,18 @@ import Header from '@/components/landing/ui/header'
 import Footer from '@/components/landing/ui/footer'
 
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap'
+})
 
-const inter = Inter({ subsets: ['latin'] })
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair-display',
   display: 'swap'
 })
+
 
 export default function RootLayout({
   children,
@@ -40,13 +44,16 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+      </head>
+      <body className={`${inter.className} ${playfair.variable} font-inter antialiased bg-slate-100 tracking-tight`}>
         <CartProvider>
           <Providers>
-            <div className="flex min-h-screen flex-col">
+            <div className="flex min-h-screen flex-col overflow-hidden">
               <BgShapes />
               <Header />
-              <main className="flex-1 bg-slate-100">{children}</main>
+              <main>{children}</main>
               <Footer />
             </div>
           </Providers>

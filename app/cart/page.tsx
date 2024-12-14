@@ -7,10 +7,11 @@ import { formatPrice } from "@/lib/utils"
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import Link from "next/link"
+import { useRouter } from 'next/navigation'
 
 export default function CartPage() {
   const { state, removeFromCart, updateQuantity } = useCart()
+  const router = useRouter()
 
   if (state.items.length === 0) {
     return (
@@ -22,14 +23,13 @@ export default function CartPage() {
             <p className="text-lg text-gray-600 mb-8">
               Start shopping to add items to your cart
             </p>
-            <Link href="/shop">
-              <Button 
-                size="lg"
-                className="bg-slate-900 hover:bg-slate-800 text-white font-medium"
-              >
-                Continue Shopping
-              </Button>
-            </Link>
+            <Button 
+              size="lg"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-medium"
+              onClick={() => router.push('/shop')}
+            >
+              Continue Shopping
+            </Button>
           </div>
         </div>
       </div>
@@ -134,7 +134,7 @@ export default function CartPage() {
               <Button 
                 className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" 
                 size="lg"
-                onClick={() => window.location.href = '/checkout'}
+                onClick={() => router.push('/checkout')}
               >
                 Proceed to Checkout
               </Button>
@@ -142,7 +142,7 @@ export default function CartPage() {
                 variant="outline"
                 className="w-full border-gray-200 text-gray-900 hover:text-gray-900 hover:bg-gray-100 font-medium py-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
                 size="lg"
-                onClick={() => window.location.href = '/shop'}
+                onClick={() => router.push('/shop')}
               >
                 Continue Shopping
               </Button>

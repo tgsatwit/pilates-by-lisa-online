@@ -7,14 +7,15 @@ import { Button } from "@/components/ui/button"
 import { formatPrice } from "@/lib/utils"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import Link from "next/link"
 import { ShoppingBag, ArrowLeft, Loader2 } from "lucide-react"
 import { createCheckout, getProductVariant } from "@/lib/shopify"
+import { useRouter } from 'next/navigation'
 
 export default function CheckoutPage() {
   const { state, items } = useCart()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
   const handleCheckout = async () => {
     try {
@@ -59,14 +60,13 @@ export default function CheckoutPage() {
             <p className="text-lg text-gray-600 mb-8">
               Add some items to your cart before proceeding to checkout
             </p>
-            <Link href="/shop">
-              <Button 
-                size="lg"
-                className="bg-slate-900 hover:bg-slate-800 text-white font-medium"
-              >
-                Continue Shopping
-              </Button>
-            </Link>
+            <Button 
+              size="lg"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-medium"
+              onClick={() => router.push('/shop')}
+            >
+              Continue Shopping
+            </Button>
           </div>
         </div>
       </div>
@@ -167,16 +167,15 @@ export default function CheckoutPage() {
                 'Proceed to Payment'
               )}
             </Button>
-            <Link href="/cart">
-              <Button
-                variant="outline"
-                className="w-full border-gray-200 text-gray-900 hover:bg-gray-100"
-                size="lg"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Return to Cart
-              </Button>
-            </Link>
+            <Button
+              variant="outline"
+              className="w-full border-gray-200 text-gray-900 hover:bg-gray-100"
+              size="lg"
+              onClick={() => router.push('/cart')}
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Return to Cart
+            </Button>
           </div>
         </div>
       </div>

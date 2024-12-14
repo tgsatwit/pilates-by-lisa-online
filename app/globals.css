@@ -71,10 +71,6 @@ video {
 /* Import Raleway from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
-/* Then you can either use it in your Tailwind config or apply it directly in your CSS */
-.h1 {
-  font-family: 'Raleway', sans-serif;
-}
 
 /* Smooth scrolling for the entire site */
 * {
