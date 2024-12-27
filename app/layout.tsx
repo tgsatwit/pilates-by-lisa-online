@@ -14,7 +14,6 @@ import { CartProvider } from "@/components/cart/cart-context"
 import Header from '@/components/landing/ui/header'
 import Footer from '@/components/landing/ui/footer'
 
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -26,7 +25,6 @@ const playfair = Playfair_Display({
   variable: '--font-playfair-display',
   display: 'swap'
 })
-
 
 export default function RootLayout({
   children,
@@ -51,8 +49,8 @@ export default function RootLayout({
         <CartProvider>
           <Providers>
             <div className="flex min-h-screen flex-col overflow-hidden">
-            <Header />
-            <BgShapes />
+              <Header />
+              <BgShapes />
               <main>{children}</main>
               <Footer />
             </div>

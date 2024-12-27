@@ -32,7 +32,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const querySnapshot = await getDocs(collection(db, "posts"))
+      const querySnapshot = await getDocs(collection(db, "blog"))
       const postsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as BlogPost[]
       setPosts(postsData)
     }
@@ -121,7 +121,11 @@ export default function BlogPage() {
           layout
         >
           {paginatedPosts.map((post, index) => (
-            <BlogCard key={post.slug} post={post} index={index} />
+            <BlogCard 
+              key={post.id}
+              post={post} 
+              index={index} 
+            />
           ))}
         </motion.div>
 

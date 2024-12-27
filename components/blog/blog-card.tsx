@@ -1,22 +1,13 @@
 "use client"
 
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { BlogPost } from "@/types"
 import Link from "next/link"
+import Image from "next/image"
+import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, ChevronLeft, ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
 
 interface BlogCardProps {
-  post: {
-    slug: string
-    title: string
-    excerpt: string
-    coverImage: string
-    date: string
-    tags: string[]
-    readingTime: string
-  }
+  post: BlogPost
   index: number
 }
 
@@ -26,55 +17,54 @@ export function BlogCard({ post, index }: BlogCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-100"
+      className="bg-white rounded-lg shadow-md overflow-hidden"
     >
-    <Link href={`/blog/${post.slug}`}>
-      <a>
-        <div className="relative h-64 overflow-hidden">
+      <Link
+        href={`/blog/${post.id}`}
+        className="block hover:opacity-90 transition-opacity"
+      >
+        <div className="relative h-48 w-full">
           <Image
-            src={post.coverImage}
+            src={post.coverImage || '/images/blog-placeholder.jpg'}
             alt={post.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover"
           />
-          {/* Post badges */}
-          <div className="absolute top-4 left-4 flex flex-col gap-2">
+        </div>
+        
+        <div className="p-6">
+          <div className="flex flex-wrap gap-2 mb-4">
             {post.tags.map((tag) => (
-              <Badge 
-                key={tag} 
-                className="bg-white/80 backdrop-blur-sm text-gray-900 shadow-sm"
+              <Badge
+                key={tag}
+                variant="secondary"
+                className="text-xs bg-slate-100"
               >
                 {tag}
               </Badge>
             ))}
           </div>
-        </div>
-        <div className="p-6">
-          <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">
+
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">
             {post.title}
           </h3>
-          <div className="text-gray-600 mb-4 line-clamp-2">
-            {post.excerpt}
-          </div>
-          <div className="flex items-center gap-4 text-sm text-gray-500">
-            <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              <time dateTime={post.date}>
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric'
-                })}
-              </time>
-            </div>
-            <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              <span>{post.readingTime}</span>
-            </div>
+
+          <p className="text-gray-600 text-sm mb-4">
+            {post.excerpt || post.content.substring(0, 150) + '...'}
+          </p>
+
+          <div className="flex items-center justify-between text-sm text-gray-500">
+            <span>{post.author}</span>
+            <span>
+              {new Date(post.createdAt).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              })}
+            </span>
           </div>
         </div>
-      </a>
-    </Link>
+      </Link>
     </motion.div>
   )
 }
