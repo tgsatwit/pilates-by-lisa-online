@@ -10,9 +10,9 @@ export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen md:min-h-[90vh] w-full">
-      {/* Background image - added scale-x-[-1] to flip horizontally */}
-      <div className="absolute inset-0 pointer-events-none -z-10" aria-hidden="true">
+    <section className="relative min-h-[100dvh] md:min-h-[90vh] w-full overflow-x-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 pointer-events-none -z-10 w-full" aria-hidden="true">
         <Image 
           src={HeroBackground}
           alt="Hero Background"

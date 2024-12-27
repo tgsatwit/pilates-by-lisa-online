@@ -37,6 +37,20 @@ img,
 video {
   max-width: 100%;
   height: auto;
+  touch-action: manipulation;
+}
+
+/* Prevent content scaling issues on mobile */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
