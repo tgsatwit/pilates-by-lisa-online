@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Adjusted padding-top to move content more towards middle */}
       <div className="relative px-4 sm:px-6 pt-20 md:pt-36 pb-12 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-2" data-aos="fade-down">
+          <div className="mb-2" data-aos="fade-down" data-aos-delay="0">
             <div className="relative inline-flex font-medium text-sm py-1 text-white">
               ONLINE PILATES & REFORMER CLASSES
             </div>
