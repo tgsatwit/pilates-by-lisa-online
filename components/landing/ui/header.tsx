@@ -66,7 +66,7 @@ export default function Header() {
           </nav>
 
           {/* Right side items - aligned */}
-          <ul className="flex items-center space-x-3 md:space-x-4">
+          <ul className="flex items-center space-x-3 md:space-x-4 pr-4">
             <li>
               <div className="scale-[1] md:scale-110 flex items-center">
                 <CartSheet />
