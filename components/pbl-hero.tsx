@@ -24,9 +24,9 @@ export default function Hero() {
       </div>
 
       {/* Adjusted padding-top to move content more towards middle */}
-      <div className="relative px-4 sm:px-6 pt-32 md:pt-36 pb-12 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
+      <div className="relative px-4 sm:px-6 pt-40 md:pt-48 pb-12 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-4" data-aos="fade-down" data-aos-delay="0">
+          <div className="mb-3" data-aos="fade-down" data-aos-delay="0">
             <div className="relative inline-flex font-medium text-xs md:text-sm py-1 text-white">
               ONLINE PILATES & REFORMER CLASSES
             </div>
@@ -45,7 +45,7 @@ export default function Hero() {
             Your own Pilates Instructor in your pocket! Achieve your fitness goals with flexible, export-led online pilates classes that fit your schedule.
           </p>
           <div 
-            className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 mx-auto w-[75%] sm:w-auto" 
+            className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 mx-auto w-3/4 sm:w-auto mt-8" 
             data-aos="fade-down" 
             data-aos-delay="400"
           >
