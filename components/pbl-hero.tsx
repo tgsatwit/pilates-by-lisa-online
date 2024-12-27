@@ -26,19 +26,19 @@ export default function Hero() {
       {/* Adjusted padding-top to move content more towards middle */}
       <div className="relative px-4 sm:px-6 pt-20 md:pt-36 pb-12 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-2" data-aos="fade-down" data-aos-delay="0">
-            <div className="relative inline-flex font-medium text-sm py-1 text-white">
+          <div className="mb-4" data-aos="fade-down" data-aos-delay="0">
+            <div className="relative inline-flex font-medium text-xs md:text-sm py-1 text-white">
               ONLINE PILATES & REFORMER CLASSES
             </div>
           </div>
           <h1 
-            className="h1 font-playfair-display text-5xl md:text-5xl lg:text-6xl mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60" 
+            className="h1 font-playfair-display text-3xl md:text-4xl lg:text-5xl mb-8 md:mb-10 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60" 
             data-aos="fade-down"
           >
             Transform Your Body with Lisa's Proven Pilates Method
           </h1>
           <p 
-            className="text-lg md:text-xl text-slate-300 mb-6 md:mb-8" 
+            className="text-base md:text-lg text-slate-300 mb-8 md:mb-10" 
             data-aos="fade-down" 
             data-aos-delay="200"
           >
