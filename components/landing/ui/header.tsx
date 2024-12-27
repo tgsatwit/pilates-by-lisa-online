@@ -74,7 +74,7 @@ export default function Header() {
             </li>
             <li>
               <Link 
-                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-2 px-4 md:py-2.5 md:px-6 text-sm md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none flex items-center" 
+                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-2 px-4 md:py-2.5 md:px-6 text-sm md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none flex items-center mr-2" 
                 href="/signup"
               >
                 <span className="relative inline-flex items-center">
