@@ -1,38 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
 import Image from 'next/image'
 import Lisa from '@/public/images/who_is_lisa.webp'
-import Testimonial02 from '@/public/images/testimonial-02.jpg'
-
-// Import Swiper and modules
-import Swiper from 'swiper'
-import { Pagination } from 'swiper/modules'
-import { EffectFade } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/effect-fade'
-import 'swiper/css/pagination'
-import Link from 'next/link'
-
-// Initialize Swiper modules
-Swiper.use([Pagination, EffectFade])
 
 export default function LisaSection() {
-
-  useEffect(() => {
-    const testimonial = new Swiper('.testimonial-carousel', {
-      slidesPerView: 1,
-      watchSlidesProgress: true,
-      effect: 'fade',
-      pagination: {
-        el: '.testimonial-carousel-pagination',
-        clickable: true,
-      },
-    })
-  }, [])
-
   return (
-    <section className="mt-12 md:mt-20" data-aos-id-6>
+    <section className="mt-12 md:mt-20">
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div
@@ -43,9 +16,9 @@ export default function LisaSection() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="py-12 md:py-20">
             {/* Section content */}
-            <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left flex flex-col md:flex-row items-center justify-end">
+            <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
               {/* Content */}
-              <div className="w-[512px] max-w-full shrink-0 md:order-1">
+              <div className="md:w-1/2">
                 {/* Copy */}
                 <h2 className="h2 font-playfair-display text-gray-900 mb-4">Who is Lisa?</h2>
                 <div className="space-y-4 text-gray-600">
@@ -67,53 +40,17 @@ export default function LisaSection() {
                 </div>
               </div>
 
-              {/* Carousel */}
-              <div className="w-full max-w-sm md:max-w-none md:mr-8 mt-12 md:mt-0" data-aos="fade-up" data-aos-anchor="[data-aos-id-6]">
-                <div className="relative max-w-sm mx-auto">
-                  <div className="absolute inset-0 mb-10 -mt-14 -mx-14 bg-transparent -z-10" aria-hidden="true" />
-
-                  {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
-                  {/* * Custom styles in src/css/additional-styles/theme.scss */}
-                  <div className="testimonial-carousel swiper-container max-w-sm mx-auto sm:max-w-none">
-                    <div className="swiper-wrapper">
-                      {/* Card #1 */}
-                      <div className="swiper-slide flex flex-col h-auto shadow-2xl text-left">
-                        <div className="relative after:absolute after:inset-0 after:bg-gradient-to-t after:from-slate-700">
-                          <Image src={Lisa} className="md:max-w-none" width={384} height={180} alt="Testiomonial 01" />
-                        </div>
-                        <div className="grow flex flex-col relative bg-gradient-to-t from-slate-800 to-slate-700 p-6 pt-14">
-                          <p className="grow font-medium text-slate-200 mb-4">
-                            “ This card is awesome. The app lets me link foreign cards with a new one which makes everything 100 times easier. Like
-                            Apple Pay, online shopping without useless phone confirmation. I wish I knew this earlier. ”
-                          </p>
-                          <div className="font-medium text-sm text-slate-500">
-                            <span className="text-slate-200">Elisa Koeppel</span> - <span className="text-slate-400">CEO & Co-Founder</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Card #2 */}
-                      <div className="swiper-slide flex flex-col h-auto shadow-2xl text-left">
-                        <div className="relative after:absolute after:inset-0 after:bg-gradient-to-t after:from-slate-700">
-                          <Image src={Testimonial02} className="md:max-w-none" width={384} height={180} alt="Testiomonial 02" />
-                        </div>
-                        <div className="grow flex flex-col relative bg-gradient-to-t from-slate-800 to-slate-700 p-6 pt-14">
-                          <p className="grow font-medium text-slate-200 mb-4">
-                            “ This card allows us to achieve compliance with minimal effort, spend practically no time on payments-related customer
-                            support, and keep the user experience on our platform. “
-                          </p>
-                          <div className="font-medium text-sm text-slate-500">
-                            <span className="text-slate-200">Maria Gress</span> - <span className="text-slate-400">CEO & Co-Founder</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bullets */}
-                  <div className="mt-4">
-                    <div className="testimonial-carousel-pagination text-center" />
-                  </div>
+              {/* Image */}
+              <div className="md:w-1/2">
+                <div className="relative rounded-2xl shadow-xl overflow-hidden">
+                  <Image 
+                    src={Lisa} 
+                    alt="Lisa - Pilates Instructor" 
+                    className="w-full h-auto"
+                    width={500}
+                    height={600}
+                    priority
+                  />
                 </div>
               </div>
             </div>

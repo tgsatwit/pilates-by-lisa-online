@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import BgShapes from '@/components/landing/bg-shapes'
-import Header from '@/components/landing/ui/header'
+import Header from '@/components/layout/header'
 
 import { Playfair_Display } from 'next/font/google'
 

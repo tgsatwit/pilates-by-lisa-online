@@ -63,7 +63,7 @@ export default function PBLPricing() {
                   <span>Access PBL Community</span>
                 </li>
               </ul>
-              <button className="btn-sm w-full text-white py-2 bg-purple-500 hover:bg-purple-600">
+              <button className="btn-sm w-full text-white py-2 bg-purple-700 hover:bg-purple-800">
                 Get Started
               </button>
             </div>
@@ -119,7 +119,7 @@ export default function PBLPricing() {
                 </li>
                 {/* Add more features */}
               </ul>
-              <button className="btn-sm w-full text-white py-2 bg-purple-500 hover:bg-purple-600">
+              <button className="btn-sm w-full text-white py-2 bg-purple-700 hover:bg-purple-800">
                 Get Started
               </button>
             </div>
@@ -150,7 +150,7 @@ export default function PBLPricing() {
                 </li>
                 {/* Add more features */}
               </ul>
-              <button className="btn-sm w-full text-white py-2 bg-purple-500 hover:bg-purple-600">
+              <button className="btn-sm w-full text-white py-2 bg-purple-700 hover:bg-purple-800">
                 Gift Today
               </button>
             </div>

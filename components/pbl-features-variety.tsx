@@ -49,14 +49,12 @@ export default function FeaturesPBLVariety() {
           <div className="text-center px-10 pb-12 md:pb-16">
             <h2 className="h2 font-playfair-display text-gray-900 mb-4">Discover the Best Online Pilates and Reformer Workouts tailored to you!</h2>
             <p className="text-lg text-center text-slate-700 mb-8">As a mum and busy professional, I know every day is different, so you can choose from our library of over 800 premium classed - from 5-minute stretches to full-length sessions. A library built over a decade of our experience in delivering high-quality, fully-instructed online Pilates workouts. We cater to your mood, needs and schedule.</p>
-            <Link 
-                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-1.5 px-3 md:py-2 md:px-5 text-xs md:text-sm group [background:linear-gradient(theme(colors.white/50),_theme(colors.white/90))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none" 
-                href="https://online.pilatesbylisa.com.au/checkout/subscribe/purchase"
-              >
-                <span className="relative inline-flex items-center">
-                  Browse Workouts <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-                </span>
-            </Link>
+            <a 
+              className="btn text-white bg-purple-700 hover:bg-purple-800 w-full sm:w-auto text-center text-md py-3 px-6"
+              href="https://online.pilatesbylisa.com.au/browse"
+            >
+              Browse Workouts <span className="tracking-normal text-white group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+            </a>
           </div>
 
           {/* Carousel */}

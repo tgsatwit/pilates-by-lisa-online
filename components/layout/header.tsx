@@ -5,7 +5,7 @@ import Logo from './logo'
 import { useEffect, useState } from 'react'
 import { useCart } from '@/components/cart/cart-context'
 import { CartSheet } from '@/components/cart/cart-sheet'
-import { Menu } from 'lucide-react'
+import { Menu, ChevronDown } from 'lucide-react'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -27,10 +27,16 @@ export default function Header() {
     { href: "/blog", label: "Blog" },
   ]
 
+  const dropdownLinks = [
+    { href: "https://online.pilatesbylisa.com.au/checkout/subscribe/purchase", label: "Sign Up" },
+    { href: "https://online.pilatesbylisa.com.au/login", label: "Login" },
+    { href: "https://online.pilatesbylisa.com.au/browse", label: "Explore" },
+  ]
+
   return (
     <header className={`fixed w-full z-30 transition-colors duration-300 ${isScrolled ? 'bg-slate-900' : 'bg-slate-900'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 md:h-16">
+        <div className="flex items-center justify-between h-[70px] md:h-[70px]">
           
           {/* Left group - Mobile menu and Logo */}
           <div className="flex items-center">
@@ -52,7 +58,35 @@ export default function Header() {
           {/* Desktop navigation - centered vertically */}
           <nav className="hidden md:flex md:grow items-center">
             <ul className="flex grow justify-center flex-wrap items-center">
-              {mobileLinks.map((link, index) => (
+              {/* Online Studio Dropdown */}
+              <li className="relative group">
+                <Link 
+                  className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out inline-flex items-center" 
+                  href="https://online.pilatesbylisa.com.au/browse"
+                >
+                  Online Studio
+                  <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                </Link>
+                {/* Dropdown Menu */}
+                <div className="absolute left-1/2 -translate-x-1/2 mt-1 pt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
+                  <div className="w-48 bg-slate-900/80 rounded-lg shadow-lg overflow-hidden">
+                    <ul className="py-1">
+                      {dropdownLinks.map((link, index) => (
+                        <li key={index}>
+                          <Link
+                            href={link.href}
+                            className="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition duration-150 ease-in-out"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              {/* Other navigation links */}
+              {mobileLinks.slice(1).map((link, index) => (
                 <li key={index}>
                   <Link 
                     className="font-medium text-sm text-slate-300 hover:text-white mx-4 lg:mx-5 transition duration-150 ease-in-out" 
@@ -66,7 +100,7 @@ export default function Header() {
           </nav>
 
           {/* Right side items - aligned */}
-          <ul className="flex items-center space-x-3 md:space-x-4 px-4">
+          <ul className="flex items-center space-x-3 md:space-x-4 pr-4 md:px-4">
             <li>
               <div className="scale-[1] md:scale-110 flex items-center">
                 <CartSheet />
@@ -112,7 +146,35 @@ export default function Header() {
               
               <nav className="mt-8">
                 <ul className="space-y-4">
-                  {mobileLinks.map((link, index) => (
+                  <li className="mb-6 flex justify-center scale-[1.2]">
+                      <div className="scale-[0.8] transform-gpu">
+                        <Logo />
+                      </div>
+                  </li>
+                  {/* Mobile menu links with dropdown items for Online Studio */}
+                  <li>
+                    <Link
+                      href="https://online.pilatesbylisa.com.au/browse"
+                      className="text-lg text-white hover:text-purple-400 transition-colors block"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Online Studio
+                    </Link>
+                    <ul className="ml-4 mt-2 space-y-2">
+                      {dropdownLinks.map((link, index) => (
+                        <li key={index}>
+                          <Link
+                            href={link.href}
+                            className="text-sm text-slate-300 hover:text-purple-400 transition-colors block"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                  {mobileLinks.slice(1).map((link, index) => (
                     <li key={index}>
                       <Link
                         href={link.href}
@@ -126,10 +188,10 @@ export default function Header() {
                   <li className="pt-4">
                     <Link
                       href="/signup"
-                      className="btn-sm text-black bg-white hover:bg-gray-100 w-full text-center inline-block py-2 px-4 rounded-full transition-colors"
+                      className="btn-md text-black bg-white hover:bg-gray-100 w-full text-center inline-block py-2 px-4 rounded-full transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      Get Started
+                      Get Started <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                     </Link>
                   </li>
                 </ul>

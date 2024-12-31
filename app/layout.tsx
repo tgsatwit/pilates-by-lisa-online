@@ -11,8 +11,8 @@ import { useEffect } from 'react'
 import { Providers } from './providers'
 import { CartProvider } from "@/components/cart/cart-context"
 
-import Header from '@/components/landing/ui/header'
-import Footer from '@/components/landing/ui/footer'
+import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
 
 const inter = Inter({
   subsets: ['latin'],

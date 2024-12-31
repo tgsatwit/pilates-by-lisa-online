@@ -39,7 +39,7 @@ export default function Footer() {
                     </a>
                   </li>
                 </ul>
-                <div className="text-sm text-slate-300">© Pilates by Lisa <span className="text-slate-500">-</span> All rights reserved.</div>
+                <div className="text-sm text-slate-300">© 2025 Pilates by Lisa <span className="text-slate-500">-</span> All rights reserved.</div>
               </div>
 
             </div>
