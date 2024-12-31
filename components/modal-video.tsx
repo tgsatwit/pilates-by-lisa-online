@@ -3,6 +3,7 @@
 import { useRef, Fragment } from 'react'
 import type { StaticImageData } from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
+import { X } from 'lucide-react'
 
 interface ModalVideoProps {
   videoUrl: string;
@@ -24,6 +25,11 @@ export default function ModalVideo({
   onOpenChange
 }: ModalVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Convert Vimeo URL to embed URL if it's a Vimeo video
+  const embedUrl = videoUrl.includes('vimeo.com') 
+    ? `https://player.vimeo.com/video/${videoUrl.split('/').pop()}?autoplay=1&title=0&byline=0&portrait=0` 
+    : videoUrl
 
   return (
     <div>
@@ -50,12 +56,30 @@ export default function ModalVideo({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="max-w-6xl mx-auto h-full flex items-center">
-              <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
-                <video ref={videoRef} width={width} controls>
-                  <source src={videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+            <div className="w-[90vw] max-w-[1600px] mx-auto">
+              <Dialog.Panel className="relative w-full aspect-video bg-black overflow-hidden rounded-lg">
+                <button
+                  onClick={() => onOpenChange(false)}
+                  className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 hover:bg-black/75 transition-colors duration-200"
+                  aria-label="Close modal"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+                {videoUrl.includes('vimeo.com') ? (
+                  <iframe
+                    src={embedUrl}
+                    width={width}
+                    height={height}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                ) : (
+                  <video ref={videoRef} width={width} height={height} controls>
+                    <source src={videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
               </Dialog.Panel>
             </div>
           </Transition.Child>

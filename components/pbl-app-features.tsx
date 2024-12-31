@@ -12,14 +12,28 @@ export default function PBLAppFeatures() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-12 md:py-20">
             {/* Section content */}
-            <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
-              {/* Content - Moved to right */}
-              <div className="md:absolute md:right-0 md:top-0 md:max-w-lg">
+            <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left md:grid md:grid-cols-3 md:gap-8">
+              {/* Video - Left 1/3 */}
+              <div className="order-2 md:order-1">
+                <div className="relative mx-4 md:mx-0">
+                  <video 
+                    src="/videos/pbl-app-video-1080.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="w-full h-auto rounded-xl hover:opacity-95 transition-opacity duration-300" 
+                  />
+                </div>
+              </div>
+
+              {/* Content - Right 2/3 */}
+              <div className="order-1 md:order-2 md:col-span-2 text-center">
                 {/* Copy */}
-                <h2 className="h2 font-playfair-display text-slate-900 mb-4" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="100">
-                  Pilates On-Demand: Anytime, Anywhere, Your Way.
+                <h2 className="h2 font-playfair-display text-center text-slate-900 mb-4" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="100">
+                  Pilates On-Demand: Your Way.
                 </h2>
-                <p className="text-lg text-slate-600 mb-8" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="200">
+                <p className="text-lg text-slate-600 text-center mb-8" data-aos="fade-up" data-aos-anchor="[data-aos-id-2]" data-aos-delay="200">
                   Transform your body and mind with flexible workouts, curated programs, and delicious recipes, all in one place.
                 </p>
 
@@ -36,62 +50,48 @@ export default function PBLAppFeatures() {
                 </div>
 
                 {/* Feature Grid */}
-                <div className="grid grid-cols-2 gap-6 mt-12" data-aos="fade-up" data-aos-delay="400">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="400">
                   {/* Explore */}
-                  <div className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col items-center text-center p-4 bg-gradient-to-b from-slate-200/30 to-slate-200/70 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
                     <Play className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-slate-900 font-semibold mb-2">Explore</h3>
                     <p className="text-slate-600 text-sm">Discover diverse workouts for every level</p>
                   </div>
 
                   {/* Programs */}
-                  <div className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col items-center text-center p-4 bg-gradient-to-b from-slate-200/30 to-slate-200/70 rounded-2xl  shadow-sm hover:shadow-md transition-shadow duration-300">
                     <Trophy className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-slate-900 font-semibold mb-2">Programs</h3>
                     <p className="text-slate-600 text-sm">Follow exclusive, structured programs</p>
                   </div>
 
                   {/* Schedules */}
-                  <div className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col items-center text-center p-4 bg-gradient-to-b from-slate-200/30 to-slate-200/70 rounded-2xl  shadow-sm hover:shadow-md transition-shadow duration-300">
                     <Calendar className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-slate-900 font-semibold mb-2">Schedules</h3>
                     <p className="text-slate-600 text-sm">Plan your weekly fitness routine</p>
                   </div>
 
                   {/* Favorites */}
-                  <div className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col items-center text-center p-4 bg-gradient-to-b from-slate-200/30 to-slate-200/70 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
                     <Heart className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-slate-900 font-semibold mb-2">Favorites</h3>
                     <p className="text-slate-600 text-sm">Save workouts for quick access</p>
                   </div>
 
                   {/* Download */}
-                  <div className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col items-center text-center p-4 bg-gradient-to-b from-slate-200/30 to-slate-200/70 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
                     <Download className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-slate-900 font-semibold mb-2">Download</h3>
                     <p className="text-slate-600 text-sm">Workout offline on any device</p>
                   </div>
 
                   {/* Nourish */}
-                  <div className="flex flex-col items-center text-center p-4 bg-slate-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="flex flex-col items-center text-center p-4 bg-gradient-to-b from-slate-200/30 to-slate-200/70 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
                     <Salad className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-slate-900 font-semibold mb-2">Nourish</h3>
                     <p className="text-slate-600 text-sm">Access healthy recipes and tips</p>
                   </div>
-                </div>
-              </div>
-
-              {/* Video - Moved to left */}
-              <div className="md:max-w-lg -mb-12 mt-8 md:mt-0 md:mb-0">
-                <div className="relative mx-4 md:mx-0">
-                  <video 
-                    src="/videos/pbl-app-video-1080.mp4" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="w-full h-auto rounded-xl hover:opacity-95 transition-opacity duration-300" 
-                  />
                 </div>
               </div>
             </div>

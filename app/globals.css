@@ -130,3 +130,13 @@ button,
 a {
   touch-action: manipulation;
 }
+
+/* Custom glow effect for carousel images */
+.glow-white {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-white:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}

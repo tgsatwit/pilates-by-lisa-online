@@ -5,11 +5,11 @@ import Lisa from '@/public/images/who_is_lisa.webp'
 
 export default function LisaSection() {
   return (
-    <section className="mt-12 md:mt-20">
+    <section className="mt-12 md:mt-20 bg-gradient-to-b from-purple-500 to-purple-600">
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div
-          className="absolute inset-0 rounded-tl-[100px] mb-24 md:mb-0 bg-gradient-to-b from-slate-300 pointer-events-none -z-10"
+          className="absolute mb-24 md:mb-0  -z-10"
           aria-hidden="true"
         />
 
@@ -20,8 +20,8 @@ export default function LisaSection() {
               {/* Content */}
               <div className="md:w-1/2">
                 {/* Copy */}
-                <h2 className="h2 font-playfair-display text-gray-900 mb-4">Who is Lisa?</h2>
-                <div className="space-y-4 text-gray-600">
+                <h2 className="h2 font-playfair-display text-white mb-4">Who is Lisa?</h2>
+                <div className="space-y-4 text-slate-100">
                   <p>
                     I've had a lifelong passion for Fitness, Wellbeing and helping others. My journey began with traditional Pilates, where I discovered the transformative power of mindful movement and body control. This passion led me to create Pilates by Lisa, an Online Studio that improves strength, flexibility, and overall wellbeing.
                   </p>

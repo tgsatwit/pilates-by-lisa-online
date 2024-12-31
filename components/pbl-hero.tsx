@@ -1,10 +1,16 @@
 'use client'
 
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import HeroBackground from '@/public/images/pbl_main_hero_bg _lrg.webp'
-import ModalVideo from '@/components/modal-video'
 import { Play } from 'lucide-react'
 import { useState } from 'react'
+
+// Lazy load the video modal
+const ModalVideo = dynamic(() => import('@/components/modal-video'), {
+  loading: () => <div className="animate-pulse bg-slate-800 rounded-lg w-full h-full" />,
+  ssr: false
+})
 
 export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -19,6 +25,9 @@ export default function Hero() {
           fill
           className="object-cover object-center scale-x-[-1]"
           priority
+          sizes="100vw"
+          quality={75}
+          placeholder="blur"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/0 to-slate-900/20" />
       </div>
@@ -27,12 +36,12 @@ export default function Hero() {
       <div className="relative px-4 sm:px-6 pt-32 md:pt-48 pb-8 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
         <div className="max-w-4xl mx-auto">
           <div className="mb-3" data-aos="fade-down" data-aos-delay="0">
-            <div className="relative inline-flex font-medium text-xs md:text-sm py-1 text-white/80 text-spacing-2">
+            <div className="relative inline-flex font-medium text-xs md:text-sm py-1 text-white/80 tracking-wider">
               ONLINE PILATES & REFORMER CLASSES
             </div>
           </div>
           <h1 
-            className="h1 font-playfair-display text-[14px] md:text-4xl lg:text-5xl mb-6 md:mb-12 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60" 
+            className="h1 font-playfair-display md:text-5xl lg:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60" 
             data-aos="fade-down"
           >
             Transform Your Body with Lisa's Proven Pilates Method

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: { 
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: 'https',
@@ -12,12 +12,36 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  devIndicators: false,
-  webpack: (config) => {
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  experimental: {
+    optimizeCss: true,
+  },
+  webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(mp4|webm)$/i,
       type: 'asset/resource',
     });
+
+    if (!dev && !isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          minSize: 20000,
+          maxSize: 244000,
+          cacheGroups: {
+            commons: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+            },
+          },
+        },
+      };
+    }
     return config;
   },
 };

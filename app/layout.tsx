@@ -50,7 +50,6 @@ export default function RootLayout({
           <Providers>
             <div className="flex min-h-screen flex-col overflow-hidden">
               <Header />
-              <BgShapes />
               <main>{children}</main>
               <Footer />
             </div>

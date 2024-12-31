@@ -25,11 +25,11 @@ export default function PBLApp() {
   }, [])
 
   return (
-    <section data-aos-id-2="">
+    <section data-aos-id-2="" className="bg-gradient-to-b from-purple-500 to-purple-600">
       <div className="relative max-w-7xl mx-auto">
 
         {/* Bg */}
-        <div className="absolute inset-0 rounded-tr-[100px] mb-24 md:mb-0 bg-purple-700 pointer-events-none -z-10" aria-hidden="true" />
+        <div className="absolute inset-0 mb-24 md:mb-0 pointer-events-none -z-10" aria-hidden="true" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-12 md:py-20">

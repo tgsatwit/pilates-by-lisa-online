@@ -14,21 +14,34 @@ import BeautifulBrides from '@/public/images/programs/Beautiful_brides.webp'
 export default function PBLPrograms() {
   // State for carousel
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [transitioning, setTransitioning] = useState(false)
   
   // Images array 
   const images = [UltimateFlexibility, AmazingArms, KickstartYourPilates, AdoreYourCore, LoveYourLegsAmplified, CardioBarre, BeautifulBrides] 
 
+  // Helper function to get image indices for the three visible slides
+  const getVisibleIndices = () => {
+    const total = images.length
+    return [
+      currentSlide,
+      (currentSlide + 1) % total,
+      (currentSlide + 2) % total
+    ]
+  }
+
   // Auto-slide effect
   useEffect(() => {
     const timer = setInterval(() => {
+      setTransitioning(true)
       setCurrentSlide((prev) => (prev + 1) % images.length)
-    }, 5000) // Change slide every 5 seconds
+      setTimeout(() => setTransitioning(false), 300)
+    }, 5000)
 
     return () => clearInterval(timer)
   }, [images.length])
 
   return (
-    <section className="mt-12 md:mt-20" data-aos-id-3>
+    <section className="mt-12 md:mt-20 pb-12" data-aos-id-3>
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div
@@ -64,28 +77,43 @@ export default function PBLPrograms() {
               </div>
 
               {/* Carousel */}
-              <div className="w-full max-w-[360px] mx-auto px-4 md:px-0 md:mx-0 md:mr-16 mt-8 md:mt-0">
-                <div className="relative overflow-hidden rounded-xl shadow-lg">
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {images.map((image, index) => (
+              <div className="w-full max-w-[600px] mx-auto px-4 md:px-0 md:mx-0 md:mr-16 mt-4 md:mt-0">
+                <div className="relative h-[500px]">
+                  {getVisibleIndices().map((imageIndex, displayIndex) => {
+                    // Calculate position offsets for grid layout with more dramatic positioning
+                    const positions = [
+                      { top: '0%', left: '20%', width: 280, rotate: -2 },  // Top image: smaller
+                      { top: '20%', left: '35%', width: 320, rotate: 4 },  // Middle image: more right rotation
+                      { top: '35%', left: '5%', width: 300, rotate: -3 }   // Bottom image: more left
+                    ]
+                    
+                    return (
                       <div
-                        key={index}
-                        className="w-full flex-shrink-0"
+                        key={imageIndex}
+                        className={`absolute transition-all duration-200 ease-in-out hover:z-10`}
+                        style={{
+                          zIndex: 2 - displayIndex,
+                          opacity: transitioning ? 0.8 : 1,
+                          top: positions[displayIndex].top,
+                          left: positions[displayIndex].left,
+                          transform: `rotate(${positions[displayIndex].rotate}deg) scale(${1 - displayIndex * 0.05})`,
+                        }}
                       >
                         <Image
-                          src={image}
-                          className="w-full h-auto rounded-xl shadow-sm hover:opacity-95 transition-opacity duration-300"
-                          width={360}
-                          height={360}
-                          alt={`Program Image ${index + 1}`}
-                          priority={index === 0}
+                          src={images[imageIndex]}
+                          className="rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200"
+                          width={positions[displayIndex].width}
+                          height={positions[displayIndex].width}
+                          alt={`Program Image ${imageIndex + 1}`}
+                          priority={displayIndex === 0}
+                          style={{
+                            width: `${positions[displayIndex].width}px`,
+                            height: 'auto'
+                          }}
                         />
                       </div>
-                    ))}
-                  </div>
+                    )
+                  })}
                 </div>
               </div>
             </div>

@@ -42,13 +42,13 @@ export default function FeaturesPBLVariety() {
   ]
 
   return (
-    <section className="relative">
+    <section className="relative bg-gradient-to-b from-purple-500 to-purple-600">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="py-12 md:py-20">
+        <div className="pt-12 pb-6 md:py-20">
           {/* Section header */}
-          <div className="text-center px-10 pb-12 md:pb-16">
-            <h2 className="h2 font-playfair-display text-gray-900 mb-4">Discover the Best Online Pilates and Reformer Workouts tailored to you!</h2>
-            <p className="text-lg text-center text-slate-700 mb-8">As a mum and busy professional, I know every day is different, so you can choose from our library of over 800 premium classed - from 5-minute stretches to full-length sessions. A library built over a decade of our experience in delivering high-quality, fully-instructed online Pilates workouts. We cater to your mood, needs and schedule.</p>
+          <div className="text-center px-10 pb-6 md:pb-10">
+            <h2 className="h2 font-playfair-display text-white mb-4">Discover the Best Online Pilates and Reformer Workouts tailored to you!</h2>
+            <p className="text-lg text-center text-slate-100 mb-8">As a mum and busy professional, I know every day is different, so you can choose from our library of over 800 premium classed - from 5-minute stretches to full-length sessions. A library built over a decade of our experience in delivering high-quality, fully-instructed online Pilates workouts. We cater to your mood, needs and schedule.</p>
             <a 
               className="btn text-white bg-purple-700 hover:bg-purple-800 w-full sm:w-auto text-center text-md py-3 px-6"
               href="https://online.pilatesbylisa.com.au/browse"
@@ -58,7 +58,7 @@ export default function FeaturesPBLVariety() {
           </div>
 
           {/* Carousel */}
-          <div className="pb-12 md:pb-16 relative">
+          <div className="relative">
             <Swiper
               modules={[Navigation, Autoplay]}
               spaceBetween={24}
@@ -77,9 +77,9 @@ export default function FeaturesPBLVariety() {
               className="max-w-sm mx-auto sm:max-w-none"
             >
               {images.map((image, index) => (
-                <SwiperSlide key={index} className="max-w-[350px] h-auto">
+                <SwiperSlide key={index} className="max-w-[350px] h-auto pb-8 ">
                   <Image
-                    className="w-full object-cover h-full rounded-lg shadow-lg"
+                    className="w-full h-full rounded-2xl shadow-lg shadow-slate-900/50 shadow-offset-2"
                     src={image.src}
                     width={350}
                     height={350}
@@ -90,11 +90,11 @@ export default function FeaturesPBLVariety() {
             </Swiper>
 
             {/* Arrows */}
-            <div className="flex mt-12 space-x-3 justify-end">
-              <button className="carousel-prev relative z-20 w-11 h-11 rounded-full flex items-center justify-center group bg-white border border-pink-200 hover:bg-pink-500 transition duration-150 ease-in-out">
+            <div className="flex space-x-3 justify-end">
+              <button className="carousel-prev relative z-20 w-11 h-11 rounded-full flex items-center justify-center group bg-white border border-purple-200 hover:bg-purple-500 transition duration-150 ease-in-out">
                 <span className="sr-only">Previous</span>
                 <svg
-                  className="fill-pink-500 group-hover:fill-white transition duration-150 ease-in-out"
+                  className="fill-purple-500 group-hover:fill-white transition duration-150 ease-in-out"
                   width="13"
                   height="12"
                   viewBox="0 0 13 12"
@@ -102,10 +102,10 @@ export default function FeaturesPBLVariety() {
                   <path d="m3.914 5 3.5-3.5L6 .086 1.086 5H1v.086L.086 6 1 6.914V7h.086L6 11.914 7.414 10.5 3.914 7H13V5z" />
                 </svg>
               </button>
-              <button className="carousel-next relative z-20 w-11 h-11 rounded-full flex items-center justify-center group bg-white border border-pink-200 hover:bg-pink-500 transition duration-150 ease-in-out">
+              <button className="carousel-next relative z-20 w-11 h-11 rounded-full flex items-center justify-center group bg-white border border-purple-200 hover:bg-purple-500 transition duration-150 ease-in-out">
                 <span className="sr-only">Next</span>
                 <svg
-                  className="fill-pink-500 group-hover:fill-white transition duration-150 ease-in-out"
+                  className="fill-purple-500 group-hover:fill-white transition duration-150 ease-in-out"
                   width="13"
                   height="12"
                   viewBox="0 0 13 12"
