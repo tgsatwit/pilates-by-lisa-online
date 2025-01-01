@@ -26,7 +26,7 @@ export default function Hero() {
           className="object-cover object-center scale-x-[-1]"
           priority
           sizes="100vw"
-          quality={75}
+          quality={95}
           placeholder="blur"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/0 to-slate-900/20" />
