@@ -1,5 +1,6 @@
 import Logo from './logo'
 import Link from 'next/link'
+import { ConnectWithLisa } from '../connect-with-lisa'
 
 export default function Footer() {
   return (
@@ -72,29 +73,13 @@ export default function Footer() {
           </div>
 
           {/* Connect with Lisa */}
-          <div className="sm:col-span-6 md:col-span-3 lg:col-span-6">
-            <h4 className="text-sm text-slate-50 font-bold mb-2">Connect with Lisa</h4>
-            <div className="space-y-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full px-3 py-2 text-sm text-slate-900 bg-white rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
-              <button className="px-6 py-2 text-sm text-white bg-purple-500 hover:bg-purple-600 rounded transition duration-150 ease-in-out">
-                CONNECT WITH LISA
-              </button>
-              <p className="text-xs text-slate-400">
-                By clicking submit, you agree to our Privacy Policy.
-              </p>
-            </div>
-          </div>
-
+          <ConnectWithLisa />
 
           {/* Navigation Links */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
             <h4 className="text-sm text-slate-50 font-bold mb-2">Quick Navigation</h4>
             <ul className="text-sm space-y-2">
-            <li>
+              <li>
                 <Link href="https://online.pilatesbylisa.com.au" className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out">
                   Online Studio
                 </Link>
