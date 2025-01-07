@@ -1,53 +1,56 @@
-'use client'
+"use client";
 
-import './globals.css'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import BgShapes from '@/components/landing/bg-shapes'
-import { Inter, Playfair_Display } from 'next/font/google'
+import "./globals.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import BgShapes from "@/components/landing/bg-shapes";
+import { Inter, Playfair_Display } from "next/font/google";
 
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
-import { Providers } from './providers'
-import { CartProvider } from "@/components/cart/cart-context"
+import { Providers } from "./providers";
+import { CartProvider } from "@/components/cart/cart-context";
 
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import { Toaster } from 'sonner'
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap'
-})
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair-display',
-  display: 'swap'
-})
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   useEffect(() => {
     AOS.init({
       once: true,
       duration: 1000,
-      easing: 'ease-out-cubic',
-      disable: 'phone',
-      startEvent: 'DOMContentLoaded',
+      easing: "ease-out-cubic",
+      disable: "phone",
+      startEvent: "DOMContentLoaded",
       mirror: true,
-      offset: 50
-    })
-  }, [])
+      offset: 50,
+    });
+  }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
@@ -60,7 +63,7 @@ export default function RootLayout({
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', 'YOUR_PIXEL_ID');
+              fbq('init', '306241734403985');
               fbq('track', 'PageView');
             `,
           }}
@@ -73,13 +76,15 @@ export default function RootLayout({
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
               })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-              ga('create', 'YOUR_GA_ID', 'auto');
+              ga('create', 'G-LMLYRLFCLR', 'auto');
               ga('send', 'pageview');
             `,
           }}
         />
       </head>
-      <body className={`${inter.className} ${playfair.variable} font-inter antialiased bg-slate-100 tracking-tight`}>
+      <body
+        className={`${inter.className} ${playfair.variable} font-inter antialiased bg-slate-100 tracking-tight`}
+      >
         <CartProvider>
           <Providers>
             <div className="flex min-h-screen flex-col overflow-hidden">
@@ -92,5 +97,5 @@ export default function RootLayout({
         <Toaster />
       </body>
     </html>
-  )
+  );
 }
