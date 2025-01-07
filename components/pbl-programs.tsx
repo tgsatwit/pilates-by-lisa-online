@@ -42,15 +42,10 @@ export default function PBLPrograms() {
 
   return (
     <section className="mt-12 md:mt-20 pb-12 relative" data-aos-id-3>
-      <style jsx>{`
-        section::before {
-          content: none !important;
-        }
-      `}</style>
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div
-          className="absolute inset-0 rounded-tl-[100px] mb-24 md:mb-0 bg-gradient-to-b from-slate-100 pointer-events-none -z-10"
+          className="absolute inset-0 rounded-tl-[100px] mb-24 md:mb-0 bg-gradient-to-b from-slate-100 to-white pointer-events-none -z-10"
           aria-hidden="true"
         />
 
