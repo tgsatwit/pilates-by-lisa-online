@@ -100,15 +100,15 @@ export default function Header() {
           </nav>
 
           {/* Right side items - aligned */}
-          <ul className="flex items-center space-x-3 md:space-x-4 pr-4 md:px-4">
+          <ul className="flex items-center space-x-2 md:space-x-4 pr-2 md:px-4">
             <li>
-              <div className="scale-[1] md:scale-110 flex items-center">
+              <div className="scale-[0.9] md:scale-110 flex items-center">
                 <CartSheet />
               </div>
             </li>
             <li>
               <Link 
-                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-2 px-4 md:py-2.5 md:px-6 text-sm md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none flex items-center mr-2" 
+                className="btn-sm text-black hover:text-black transition duration-150 ease-in-out py-1.5 px-3 md:py-2.5 md:px-6 text-xs md:text-sm group [background:linear-gradient(theme(colors.white),_theme(colors.white))_padding-box,_conic-gradient(theme(colors.slate.100),_theme(colors.slate.300)_25%,_theme(colors.slate.300)_75%,_theme(colors.slate.100)_100%)_border-box] relative before:absolute before:inset-0 before:bg-white/30 before:rounded-full before:pointer-events-none flex items-center" 
                 href="/signup"
               >
                 <span className="relative inline-flex items-center">
