@@ -50,7 +50,7 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="flex-initial scale-[0.7] md:scale-[0.8] transform-gpu origin-left flex items-center">
+            <div className="flex-initial scale-[0.65] md:scale-[0.75] transform-gpu origin-left flex items-center -mr-4">
               <Logo />
             </div>
           </div>
