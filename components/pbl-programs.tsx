@@ -41,7 +41,12 @@ export default function PBLPrograms() {
   }, [images.length])
 
   return (
-    <section className="mt-12 md:mt-20 pb-12" data-aos-id-3>
+    <section className="mt-12 md:mt-20 pb-12 relative" data-aos-id-3>
+      <style jsx>{`
+        section::before {
+          content: none !important;
+        }
+      `}</style>
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div
@@ -84,7 +89,13 @@ export default function PBLPrograms() {
                     const positions = [
                       { top: '0%', left: '20%', width: 280, rotate: -2 },  // Top image: smaller
                       { top: '20%', left: '35%', width: 320, rotate: 4 },  // Middle image: more right rotation
-                      { top: '35%', left: '5%', width: 300, rotate: -3 }   // Bottom image: more left
+                      { 
+                        top: window.innerWidth < 768 ? '25%' : '35%', 
+                        left: window.innerWidth < 768 ? '15%' : '5%', 
+                        width: 300, 
+                        rotate: -3,
+                        display: window.innerWidth < 640 ? 'none' : 'block' // Hide on very small screens
+                      }   // Bottom image: adjusted for mobile
                     ]
                     
                     return (
