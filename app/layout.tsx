@@ -51,6 +51,30 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','YOUR-GTM-ID');
+            `,
+          }}
+        />
+        {/* Google Ads */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-ADS-ID"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'YOUR-ADS-ID');
+            `,
+          }}
+        />
         {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
@@ -85,6 +109,15 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${playfair.variable} font-inter antialiased bg-slate-100 tracking-tight`}
       >
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=YOUR-GTM-ID"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <CartProvider>
           <Providers>
             <div className="flex min-h-screen flex-col overflow-hidden">

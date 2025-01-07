@@ -13,4 +13,12 @@ export const trackEvent = (eventName: string, properties = {}) => {
       ...properties
     });
   }
+
+  // Google Ads Conversion Tracking
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'conversion', {
+      'send_to': 'YOUR-ADS-ID/' + eventName,
+      ...properties
+    });
+  }
 };
