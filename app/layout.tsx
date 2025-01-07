@@ -37,7 +37,10 @@ export default function RootLayout({
       once: true,
       duration: 1000,
       easing: 'ease-out-cubic',
-      disable: false
+      disable: 'phone',
+      startEvent: 'DOMContentLoaded',
+      mirror: true,
+      offset: 50
     })
   }, [])
 

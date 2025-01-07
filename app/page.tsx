@@ -23,18 +23,18 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Hero />
-      <PBLValue />
-      <TestimonialsSection />
-      <FeaturesPBLVariety />
-      <PBLAppFeatures />
-      <PBLApp />
-      <PBLPrograms />
-      <LisaSection />
-      <PBLPricing />
-      <FreeWorkoutSection />
-      <PBLFAQSection />
-      <PBLCTASection />
+      <Hero data-aos="fade-up" data-aos-delay="50" />
+      <PBLValue data-aos="fade-up" data-aos-delay="100" />
+      <TestimonialsSection data-aos="fade-up" data-aos-delay="150" />
+      <FeaturesPBLVariety data-aos="fade-up" data-aos-delay="200" />
+      <PBLAppFeatures data-aos="fade-up" data-aos-delay="250" />
+      <PBLApp data-aos="fade-up" data-aos-delay="300" />
+      <PBLPrograms data-aos="fade-up" data-aos-delay="350" />
+      <LisaSection data-aos="fade-up" data-aos-delay="400" />
+      <PBLPricing data-aos="fade-up" data-aos-delay="450" />
+      <FreeWorkoutSection data-aos="fade-up" data-aos-delay="500" />
+      <PBLFAQSection data-aos="fade-up" data-aos-delay="550" />
+      <PBLCTASection data-aos="fade-up" data-aos-delay="600" />
     </>
   );
 }
