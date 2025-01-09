@@ -12,7 +12,7 @@ export default function PBLPricing() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-start">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-4 lg:gap-8 items-start">
             {/* Basic Plan */}
             <div className="relative flex flex-col h-full p-6 bg-white shadow-lg rounded-2xl">
               <div className="mb-4 pb-6 border-b border-slate-200">

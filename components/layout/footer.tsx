@@ -1,6 +1,6 @@
 import Logo from "./logo";
 import Link from "next/link";
-import { ConnectWithLisa } from "../connect-with-lisa";
+import { ConnectWithLisa } from "../pbl-connect-with-lisa";
 
 export default function Footer() {
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
                   <li className="px-2">
                     <a
                       className="flex justify-center items-center text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out"
-                      href="https://youtube.com"
+                      href="https://www.youtube.com/user/PilatesByLisa"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="YouTube"
@@ -37,7 +37,7 @@ export default function Footer() {
                   <li className="px-2">
                     <a
                       className="flex justify-center items-center text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out"
-                      href="https://facebook.com"
+                      href="https://facebook.com/pilatesbylisa"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Facebook"
@@ -54,7 +54,7 @@ export default function Footer() {
                   <li className="px-2">
                     <a
                       className="flex justify-center items-center text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out"
-                      href="https://instagram.com"
+                      href="https://www.instagram.com/pilatesbylisaonline"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"

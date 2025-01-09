@@ -40,7 +40,7 @@ export default function PBLApp() {
             {/* Section content */}
             <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
               {/* Image Carousel - Moved up */}
-              <div className="md:absolute md:right-0 md:top-[-80px] mb-8 mt-8 md:mt-0 md:mb-0">
+              <div className="md:absolute md:right-0 md:top-[-130px] mt-4 md:mt-0 md:mb-0">
                 <div className="relative mx-4 md:mx-0">
                   <Image
                     className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mt-8 md:mt-0 pointer-events-none -z-10 max-w-none mix-blend-lighten"
@@ -55,7 +55,7 @@ export default function PBLApp() {
                   >
                     <Image
                       src={images[currentImageIndex]}
-                      className="w-full mb-16 md:mb-4 md:w-[450px] transition-all duration-500 md:rotate-[5deg]"
+                      className="w-full mb-8 md:mb-4 md:w-[450px] transition-all duration-500 md:rotate-[5deg]"
                       width={775}
                       height={500}
                       priority
