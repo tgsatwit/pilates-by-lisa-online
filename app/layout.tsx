@@ -1,5 +1,4 @@
 import "./globals.css";
-import "aos/dist/aos.css";
 import BgShapes from "@/components/landing/bg-shapes";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Providers } from "./providers";
@@ -8,7 +7,6 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { Toaster } from "sonner";
 import Scripts from '@/components/Scripts'
-import AOSInit from '@/components/AOSInit'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,7 +38,6 @@ export default function RootLayout({
       >
         <CartProvider>
           <Providers>
-            <AOSInit />
             <div className="flex min-h-screen flex-col overflow-hidden">
               <Header />
               <main>{children}</main>
