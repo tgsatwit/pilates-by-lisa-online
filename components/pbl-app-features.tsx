@@ -13,7 +13,7 @@ export default function PBLAppFeatures() {
         />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="pt-12 md:py-20">
+          <div className="pt-12 md:py-28">
             {/* Section content */}
             <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left md:grid md:grid-cols-3 md:gap-8">
               {/* Video - Left 1/3 */}
