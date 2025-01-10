@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import HeroBackground from '@/public/images/pbl_main_hero_bg_lrg.webp'
-import HeroBackgroundMobile from '@/public/images/pbl_main_hero_mobile_bg.webp'
+import HeroBackgroundMobile from '@/public/images/pbl_main_hero_bg_mobile.webp'
 import { Play } from 'lucide-react'
 import { useState } from 'react'
 
