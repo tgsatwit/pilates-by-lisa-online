@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import HeroBackground from '@/public/images/pbl_main_hero_bg _lrg.webp'
+import HeroBackground from '@/public/images/pbl_main_hero_bg_lrg.webp'
 import HeroBackgroundMobile from '@/public/images/pbl_main_hero_mobile_bg.webp'
 import { Play } from 'lucide-react'
 import { useState } from 'react'
@@ -35,7 +35,7 @@ export default function Hero() {
             fill
             className="object-cover object-center scale-x-[-1]"
             priority
-            sizes="100vw"
+            sizes="(min-width: 768px) 100vw, 100vw"
             quality={95}
             placeholder="blur"
           />
@@ -44,7 +44,7 @@ export default function Hero() {
       </div>
 
       {/* Adjusted padding-top to move content more towards middle */}
-      <div className="relative px-4 sm:px-6 pt-32 md:pt-48 pb-8 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
+      <div className="relative px-4 sm:px-6 pt-36 md:pt-48 pb-8 md:pb-20 flex items-center min-h-screen md:min-h-[90vh]">
         <div className="max-w-4xl mx-auto">
           <div className="mb-3" data-aos="fade-down" data-aos-delay="0">
             <div className="relative inline-flex font-medium text-xs md:text-sm py-1 text-white/80 tracking-wider">
