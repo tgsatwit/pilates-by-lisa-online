@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, FC } from 'react'
 import Image from 'next/image'
-import FeaturesImage from '@/public/images/features-home-02.png';
+import FeaturesImage from '../../public/images/features-illustration.svg';
 
 const FeaturesHome02: FC = () => {
   const [tab, setTab] = useState<number>(1)

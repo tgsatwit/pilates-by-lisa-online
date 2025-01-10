@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import ModalVideo from '@/components/modal-video'
-import VideoThumb from '@/public/images/explainer.jpg'
+import VideoThumb from '../../public/images/pbl-app-video-1080.mp4'
 
 export default function Explainer() {
   const [isOpen, setIsOpen] = useState(false)

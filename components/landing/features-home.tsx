@@ -2,7 +2,7 @@
 
 import { useState, FC } from 'react'
 import Image from 'next/image'
-import FeaturesImage from '@/public/images/features-home-01.jpg'
+import FeaturesImage from '../../public/images/features-illustration.svg'
 import { Playfair_Display } from 'next/font/google'
 
 const playfair = Playfair_Display({

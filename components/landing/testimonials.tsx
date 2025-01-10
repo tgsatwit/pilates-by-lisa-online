@@ -4,9 +4,9 @@ import { useState, useRef, useEffect, FC } from 'react'
 import Image, { StaticImageData } from 'next/image'
 import Particles from './particles'
 
-import TestimonialImg01 from '@/public/images/testimonial-01.jpg'
-import TestimonialImg02 from '@/public/images/testimonial-02.jpg'
-import TestimonialImg03 from '@/public/images/testimonial-03.jpg'
+import TestimonialImg01 from '../../public/images/carousel/Beginner_square.webp'
+import TestimonialImg02 from '../../public/images/carousel/Equipment_free_square.webp'
+import TestimonialImg03 from '../../public/images/carousel/Series_square.webp'
 
 interface Item {
   img: StaticImageData
