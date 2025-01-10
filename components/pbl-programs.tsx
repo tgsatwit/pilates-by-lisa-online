@@ -41,7 +41,7 @@ export default function PBLPrograms() {
   }, [images.length])
 
   return (
-    <section className="mt-12 md:mt-20 pb-12 relative" data-aos-id-3>
+    <section className="mt-12 md:mt-20 pb-12 md:pb-16 relative" data-aos-id-3>
       <div className="relative max-w-7xl mx-auto">
         {/* Bg */}
         <div

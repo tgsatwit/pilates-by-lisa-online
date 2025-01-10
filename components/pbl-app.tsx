@@ -36,7 +36,7 @@ export default function PBLApp() {
         />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="pt-12 md:py-20">
+          <div className="pt-8 pb-8 md:py-20">
             {/* Section content */}
             <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
               {/* Image Carousel - Moved up */}

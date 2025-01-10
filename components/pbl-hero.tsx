@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import HeroBackground from '@/public/images/pbl_main_hero_bg _lrg.webp'
+import HeroBackgroundMobile from '@/public/images/pbl_main_hero_mobile_bg.webp'
 import { Play } from 'lucide-react'
 import { useState } from 'react'
 
@@ -19,16 +20,26 @@ export default function Hero() {
     <section className="relative min-h-[100dvh] md:min-h-[90vh] w-full overflow-x-hidden">
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none -z-10 w-full" aria-hidden="true">
-        <Image 
-          src={HeroBackground}
-          alt="Hero Background"
-          fill
-          className="object-cover object-center scale-x-[-1]"
-          priority
-          sizes="100vw"
-          quality={95}
-          placeholder="blur"
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet={HeroBackgroundMobile.src}
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet={HeroBackground.src}
+          />
+          <Image 
+            src={HeroBackground}
+            alt="Hero Background"
+            fill
+            className="object-cover object-center scale-x-[-1]"
+            priority
+            sizes="100vw"
+            quality={95}
+            placeholder="blur"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/0 to-slate-900/20" />
       </div>
 

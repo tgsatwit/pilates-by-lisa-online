@@ -44,7 +44,7 @@ export default function FeaturesPBLVariety() {
   return (
     <section className="relative bg-gradient-to-b from-purple-500 to-purple-600">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-12 pb-6 md:py-20">
+        <div className="pt-12 pb-20 md:py-20">
           {/* Section header */}
           <div className="text-center px-10 pb-6 md:pb-10">
             <h2 className="h2 font-playfair-display text-white mb-4">Discover the Best Online Pilates and Reformer Workouts tailored to you!</h2>
