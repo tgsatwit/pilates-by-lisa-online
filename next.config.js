@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: { 
@@ -56,6 +55,9 @@ const nextConfig = {
       };
     }
     return config;
+  },
+  devIndicators: {
+    buildActivity: false,
   },
 };
 
