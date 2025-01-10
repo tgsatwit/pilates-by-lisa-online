@@ -12,16 +12,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 import { BlogPost } from "@/types";
 
-const tags = [
-  "All",
-  "Pilates",
-  "Wellness",
-  "Fitness",
-  "Nutrition",
-  "Mindfulness",
-  "Technique",
-];
-
 const POSTS_PER_PAGE = 6;
 
 export default function BlogPage() {
@@ -29,15 +19,20 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [categories, setCategories] = useState<string[]>(["All"]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const querySnapshot = await getDocs(collection(db, "posts"));
       const postsData = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
         ...doc.data(),
+        id: doc.id,
       })) as BlogPost[];
       setPosts(postsData);
+
+      // Extract unique categories from posts and update categories state
+      const uniqueCategories = new Set(postsData.flatMap(post => post.categories));
+      setCategories(["All", ...Array.from(uniqueCategories)]);
     };
 
     fetchPosts();
@@ -47,11 +42,11 @@ export default function BlogPage() {
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
       const matchesTag =
-        selectedTag === "All" || post.tags.includes(selectedTag);
+        selectedTag === "All" || post.categories.includes(selectedTag);
       const matchesSearch =
         searchQuery === "" ||
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+        (post.excerpt && post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesTag && matchesSearch;
     });
   }, [selectedTag, searchQuery, posts]);
@@ -104,19 +99,19 @@ export default function BlogPage() {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 justify-center mb-16">
-          {tags.map((tag) => (
+          {categories.map((category) => (
             <Badge
-              key={tag}
+              key={category}
               variant="outline"
               className={cn(
                 "cursor-pointer px-4 py-2 text-sm transition-colors hover:bg-gray-900 hover:text-white border-2 text-gray-700 font-medium rounded-full",
-                selectedTag === tag
+                selectedTag === category
                   ? "bg-slate-900 text-white border-slate-900 shadow-md"
                   : "border-slate-300 hover:border-slate-900",
               )}
-              onClick={() => handleTagChange(tag)}
+              onClick={() => handleTagChange(category)}
             >
-              {tag}
+              {category}
             </Badge>
           ))}
         </div>
